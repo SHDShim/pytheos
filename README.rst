@@ -18,6 +18,8 @@ Install
 Pythoeos is a pure python package, and can be installed from source or with
 ``pip install pytheos``.
 
+For anaconda users, ``conda install -c shdshim pytheos''.
+
 Contact
 -------
 
