@@ -1,14 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is part of the `pytheos` package ([Github]()). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
+# In[1]:
+
+get_ipython().magic('cat 0Source_Citation.txt')
+
 
 # In[2]:
-
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -17,7 +15,6 @@ get_ipython().magic('matplotlib inline')
 # For high dpi displays.
 
 # In[3]:
-
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -32,8 +29,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[5]:
-
+# In[4]:
 
 import numpy as np
 from uncertainties import unumpy as unp
@@ -44,8 +40,7 @@ import pytheos as eos
 
 # Setup dictionaries for pressure standard `(au_eos)` and equation to use `(fit_model)`.  This allows for eos fits with a wide range of different pressure scales.
 
-# In[6]:
-
+# In[5]:
 
 au_eos = {'Fei2007': eos.gold.Fei2007bm3(), 'Dorogokupets2007': eos.gold.Dorogokupets2007(),
           'Yokoo2009': eos.gold.Yokoo2009(), 'Ye2017': eos.gold.Ye2017()}
@@ -55,24 +50,21 @@ fit_model = {'Fei2007': eos.BM3Model(), 'Dorogokupets2007': eos.VinetModel(),
 
 # Lundin et al. (2007) used the gold scale by Tsuchiya (2003).  Since then many updates have been made by a few different authors.
 
-# In[7]:
-
+# In[6]:
 
 au_org = eos.gold.Tsuchiya2003()
 
 
 # Uncomment the following line to get some help.
 
-# In[8]:
-
+# In[7]:
 
 #help(eos.gold.Yokoo2009)
 
 
 # We set initial values for the EOS parameters.
 
-# In[9]:
-
+# In[8]:
 
 v0 = {'en100': 162.30, 'en91': 163.18, 'en85': 163.30}
 k0 = {'en100': 260., 'en91': 260., 'en85': 260.}
@@ -83,16 +75,14 @@ k0p = {'en100': 4.0, 'en91': 4.0, 'en85': 4.0}
 
 # Read data file.  Data points are stored in `csv` files.  
 
-# In[10]:
-
+# In[9]:
 
 data = np.recfromcsv('./data/Lundin2007.csv', case_sensitive=True, deletechars='')
 
 
 # Make error propagation possible.
 
-# In[11]:
-
+# In[10]:
 
 v = {'en100': unp.uarray(data['v(en100)'][~np.isnan(data['v(en100)'])],
                         data['sv(en100)'][~np.isnan(data['v(en100)'])]),
@@ -109,8 +99,7 @@ v_std= {}
 
 # In order to understand the cell below, please try the `8_pv_eos_fit_multi-scales.ipynb` file first.
 
-# In[13]:
-
+# In[11]:
 
 for key, value in v.items():
     model = eos.BM3Model()
@@ -127,8 +116,7 @@ for key, value in v.items():
 
 # In order to convert to different gold scale, we first invert the equation to get volume from pressure.  The cell below iteratively perform this task for all three different compositions in Lundin et al.
 
-# In[15]:
-
+# In[12]:
 
 for key, value in p_org.items():
     p_tempo = unp.nominal_values(value)
@@ -143,8 +131,7 @@ for key, value in p_org.items():
 
 # We fix `v0` and `k0p` in this fitting example
 
-# In[17]:
-
+# In[13]:
 
 for comp, value in v.items(): # iteration for different compositions
     for key, value in au_eos.items(): # iteration for different gold scales
@@ -163,7 +150,6 @@ for comp, value in v.items(): # iteration for different compositions
 
 
 # In[ ]:
-
 
 
 

@@ -1,13 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is part of the `pytheos` package ([Github]()). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
+
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -15,7 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -26,7 +25,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[3]:
+# In[4]:
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -36,60 +35,60 @@ import pytheos as eos
 
 # # 3. Compare
 
-# In[4]:
+# In[5]:
 
 eta = np.linspace(0., 0.225, 46)
 print(eta)
 
 
-# In[5]:
+# In[6]:
 
 jamieson_aul = eos.gold.Jamieson1982L()
 jamieson_auh = eos.gold.Jamieson1982H()
 
 
-# In[6]:
+# In[7]:
 
 jamieson_aul.print_equations()
 
 
-# In[7]:
+# In[8]:
 
 jamieson_auh.print_equations()
 
 
-# In[8]:
+# In[9]:
 
 jamieson_aul.print_parameters()
 
 
-# In[9]:
+# In[10]:
 
 jamieson_auh.print_parameters()
 
 
-# In[10]:
+# In[11]:
 
 v0 = 67.84747902176544
 
 
-# In[11]:
+# In[12]:
 
 jamieson_aul.three_r
 
 
-# In[12]:
+# In[13]:
 
 jamieson_auh.three_r
 
 
-# In[13]:
+# In[14]:
 
 v = v0 * (1.-eta) 
 temp = 1500.
 
 
-# In[14]:
+# In[15]:
 
 p = jamieson_auh.cal_p(v, temp * np.ones_like(v))
 
@@ -97,14 +96,14 @@ p = jamieson_auh.cal_p(v, temp * np.ones_like(v))
 # <img src='./tables/Jamieson_Au_1.png'>
 # <img src='./tables/Jamieson_Au_2.png'>
 
-# In[15]:
+# In[16]:
 
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
 
 
-# In[16]:
+# In[17]:
 
 v = jamieson_auh.cal_v(p, temp * np.ones_like(p), min_strain=0.6)
 print(1.-(v/v0))

@@ -47,8 +47,7 @@ def tsuchiya_pel(v, temp, v0, a, b, c, d, n, z, three_r=3. * constants.R,
     :param t_ref: reference temperature, 300 K
     :param three_r: 3 times gas constant
     :return: electronic contribution in GPa
-    :note:
-        - note that n, z, three_r are not used but in there for consistency
+    :note: n, z, three_r are not used but in there for consistency
         with other electronic contribution equations
     """
     def f(temp):

@@ -4,23 +4,14 @@ PythEOS
 
 PythEOS is an open source python toolbox for equation of state (EOS).
 It includes:
-    - a range of different equations
-    - EOS fitting tools
-    - a range of pressure scales
+- a range of different equations
+- EOS fitting tools
+- a range of pressure scales
 
 Some important motivations are:
-    - reproducible error propagation for EOS
-    - flexible EOS fitting with a wide range of combinations of static,
-        thermal, electronic, and anharmonic effects
-    - reliable conversion of pressure scale
-
-How to cite: S.-H. Shim (2017) PythEOS - a python tool for equations of state.
-    doi:
-
-Author: Sang-Heon Dan Shim, Arizona State University
-Version: 0.0.1
-Last update: 2017/06/05
-License: Apache License 2.0
+- reproducible error propagation for EOS
+- flexible EOS fitting with a wide range of combinations of static, thermal, electronic, and anharmonic effects
+- reliable conversion of pressure scale
 
 **Notations**
 

@@ -1,13 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is a part of the `pytheos` package ([Github](http://github.com/SHDShim/pytheos)). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
+
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -15,7 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -26,7 +25,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[3]:
+# In[4]:
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -36,25 +35,20 @@ import pytheos as eos
 
 # # 3. Compare
 
-# In[4]:
+# In[5]:
 
 eta = np.linspace(1., 0.65, 8)
 print(eta)
 
 
-# In[5]:
+# In[6]:
 
 dorogokupets2015_au = eos.gold.Dorogokupets2015()
 
 
-# In[6]:
-
-help(dorogokupets2015_au)
-
-
 # In[7]:
 
-dorogokupets2015_au.print_equations()
+help(dorogokupets2015_au)
 
 
 # In[8]:
@@ -64,31 +58,36 @@ dorogokupets2015_au.print_equations()
 
 # In[9]:
 
-dorogokupets2015_au.print_parameters()
+dorogokupets2015_au.print_equations()
 
 
 # In[10]:
 
-v0 = 67.84742110765599
+dorogokupets2015_au.print_parameters()
 
 
 # In[11]:
 
-dorogokupets2015_au.three_r
+v0 = 67.84742110765599
 
 
 # In[12]:
+
+dorogokupets2015_au.three_r
+
+
+# In[13]:
 
 v = v0 * (eta) 
 temp = 2500.
 
 
-# In[13]:
+# In[14]:
 
 p = dorogokupets2015_au.cal_p(v, temp * np.ones_like(v))
 
 
-# In[14]:
+# In[15]:
 
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):

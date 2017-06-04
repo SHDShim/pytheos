@@ -1,13 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is a part of the `pytheos` package ([Github](http://github.com/SHDShim/pytheos)). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
+
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -15,7 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -28,7 +27,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. General setup
 
-# In[3]:
+# In[4]:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -47,7 +46,7 @@ from uncertainties import unumpy as unp
 # 
 # * MgO: $V_0 = 74.698$ A$^{3}$, $K_0 = 160.3$ GPa, $K_0' = 4.109\pm 0.022$.  
 
-# In[14]:
+# In[5]:
 
 v0 = {'Pt': 3.9231**3, 'Au': 4.07860**3, 'MgO': 74.698}
 k0 = {'Pt': 277.3, 'Au': 167.0, 'MgO': 160.3}
@@ -56,7 +55,7 @@ k0p = {'Pt': uct.ufloat(5.226, 0.033), 'Au': uct.ufloat(5.813, 0.022), 'MgO': uc
 
 # Set pressure range and number of data points.
 
-# In[16]:
+# In[6]:
 
 p_max = 150.
 n_pts = 100
@@ -66,12 +65,12 @@ standard = 'MgO'
 
 # Calculate volume of MgO at different pressures.
 
-# In[17]:
+# In[7]:
 
 v = eos.vinet_v(p, v0[standard], k0[standard], k0p[standard])
 
 
-# In[18]:
+# In[8]:
 
 plt.plot(p,unp.nominal_values(v))
 plt.xlabel('Pressure (GPa)')
@@ -80,21 +79,21 @@ plt.ylabel('Unit-cell volume ($\mathrm{\AA}^3$)');
 
 # Fit the synthetic data to get $K_0'$ for BM equation.  First, setup bm3 model.
 
-# In[26]:
+# In[9]:
 
 model_bm3 = eos.BM3Model()
 
 
 # Generate parameters
 
-# In[27]:
+# In[10]:
 
 params = model_bm3.make_params(v0=v0[standard], k0=k0[standard], k0p=k0p[standard].n)
 
 
 # Fix parameters
 
-# In[28]:
+# In[11]:
 
 params['v0'].vary = False
 params['k0'].vary = False
@@ -102,13 +101,13 @@ params['k0'].vary = False
 
 # Run fitting
 
-# In[29]:
+# In[12]:
 
 fitresult_bm3 = model_bm3.fit(p, params, v=unp.nominal_values(v))
 print(fitresult_bm3.fit_report())
 
 
-# In[30]:
+# In[13]:
 
 eos.plot.static_fit_result(fitresult_bm3)
 

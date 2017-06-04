@@ -1,13 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is part of the `pytheos` package ([Github]()). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
+
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -15,7 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -28,7 +27,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[3]:
+# In[4]:
 
 import numpy as np
 from uncertainties import unumpy as unp
@@ -39,7 +38,7 @@ import pytheos as eos
 
 # Setup dictionaries for pressure standard `(au_eos)` and equation to use `(fit_model)`.  This allows for eos fits with a wide range of different pressure scales.
 
-# In[4]:
+# In[5]:
 
 au_eos = {'Fei2007': eos.gold.Fei2007bm3(), 'Dorogokupets2007': eos.gold.Dorogokupets2007(),
           'Yokoo2009': eos.gold.Yokoo2009()}
@@ -49,21 +48,21 @@ fit_model = {'Fei2007': eos.BM3Model(), 'Dorogokupets2007': eos.VinetModel(),
 
 # SiC has two polymorphs, 3C and 6H, at the studied pressure range.  This notebook can conduct fitting for 3C.  However, changing the `sample` variable between `3C` and `6H` allows for reading different data files and apply different initial conditions for different phases.
 
-# In[5]:
+# In[6]:
 
 sample = '3C' #'6H' #
 
 
 # Uncomment the following line to get some help.
 
-# In[6]:
+# In[7]:
 
 #help(eos.gold.Yokoo2009)
 
 
 # We use the values from Zhuravlev (2013) for initial guess.
 
-# In[7]:
+# In[8]:
 
 v0 = {'3C': 82.804, '6H': 124.27}
 k0 = {'3C': 218., '6H': 218.}
@@ -74,14 +73,14 @@ k0p = {'3C': 3.75, '6H': 3.75}
 
 # Read data file.  Data points are stored in `csv` files.  
 
-# In[8]:
+# In[9]:
 
 data = np.recfromcsv('./data/'+sample+'-300EOS-final.csv', case_sensitive=True, deletechars='')
 
 
 # Sort the data in a reverse order based on the unit-cell volume of pressure standard.
 
-# In[9]:
+# In[10]:
 
 n = data['V(Au)'].__len__()
 ind = data['V(Au)'].argsort()[::-1][:n]
@@ -89,7 +88,7 @@ ind = data['V(Au)'].argsort()[::-1][:n]
 
 # Make error propagation possible.
 
-# In[10]:
+# In[11]:
 
 v_std = unp.uarray(data['V(Au)'][ind], data['sV(Au)'][ind])
 v = unp.uarray(data['V('+sample+')'][ind], data['sV('+sample+')'][ind])
@@ -99,7 +98,7 @@ v = unp.uarray(data['V('+sample+')'][ind], data['sV('+sample+')'][ind])
 
 # The cell below runs an iteration to generate fitting for three different pressure scales.  We fix `v0` in this fitting example.
 
-# In[11]:
+# In[12]:
 
 for key, value in au_eos.items():
     # set pressure standard to use

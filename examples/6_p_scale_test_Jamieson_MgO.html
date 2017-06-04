@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>6_p_scale_test_Dorogokupets2015_Pt</title>
+<title>6_p_scale_test_Jamieson_MgO</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11828,7 +11828,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This example compares pressure calculated from <code>pytheos</code> and original publication for the platinum scale by Dorogokupets 2015.</p>
+<p>This example compares pressure calculated from <code>pytheos</code> and original publication for the MgO scale by Jamieson 1983.</p>
 
 </div>
 </div>
@@ -11872,7 +11872,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mi">53</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span>
 </pre></div>
 
@@ -11886,7 +11886,12 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 1.    0.95  0.9   0.85  0.8   0.75  0.7 ]
+<pre>[ 0.     0.005  0.01   0.015  0.02   0.025  0.03   0.035  0.04   0.045
+  0.05   0.055  0.06   0.065  0.07   0.075  0.08   0.085  0.09   0.095  0.1
+  0.105  0.11   0.115  0.12   0.125  0.13   0.135  0.14   0.145  0.15
+  0.155  0.16   0.165  0.17   0.175  0.18   0.185  0.19   0.195  0.2    0.205
+  0.21   0.215  0.22   0.225  0.23   0.235  0.24   0.245  0.25   0.255
+  0.26 ]
 </pre>
 </div>
 </div>
@@ -11900,7 +11905,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dorogokupets2015_pt</span> <span class="o">=</span> <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Dorogokupets2015</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jamieson_mgo</span> <span class="o">=</span> <span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Jamieson1982</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11913,7 +11918,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Dorogokupets2015</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jamieson_mgo</span><span class="o">.</span><span class="n">print_equations</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -11926,109 +11931,10 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on class Dorogokupets2015 in module pytheos.scales.platinum:
-
-class Dorogokupets2015(pytheos.scales.objs.MGEOS)
- |  Dorogokupets et al. 2015. RGG 56, 172+
- |  
- |  Method resolution order:
- |      Dorogokupets2015
- |      pytheos.scales.objs.MGEOS
- |      builtins.object
- |  
- |  Methods defined here:
- |  
- |  __init__(self, v0=60.37930856339099)
- |      :param params_st: elastic parameters for static EOS in an OrderedDict
- |          [v0 in A^3, k0 in GPa, k0p]
- |      :param params_th: thermal parameters for thermal EOS in an OrderedDict.
- |          The component can differ depending on the equation used.
- |      :param params_anh: anharmonic parameters for anharmonic correction in
- |          an OrderedDict.  The component can differ depending on the
- |          equation used.
- |      :param params_el: electronic parameters for electronic correction in
- |          an OrderedDict. The component can differ depending on the
- |          equation used.
- |      :param eqn_st: equation type for the static EOS. &#39;bm3&#39;, &#39;vinet&#39;, or
- |          &#39;kunc&#39;
- |      :param eqn_th: equation type for the thermal EOS. &#39;constq&#39;, &#39;tange&#39;,
- |          &#39;speziale&#39;, &#39;dorogokupets2007&#39;, &#39;dorogokupets2015&#39;, &#39;alphakt&#39;
- |      :param eqn_anh: equation type for anharmonic correction. &#39;zharkov&#39;,
- |      :param eqn_el: equation type for electonic correction. &#39;zharkov&#39;,
- |          &#39;tsuchiya&#39;
- |      :param t_ref: reference temperature, 300 K
- |      :param three_r: 3 times gas constant.
- |          Jamieson modified this value to compensate for mismatches
- |      :param reference: reference for the EOS
- |  
- |  ----------------------------------------------------------------------
- |  Methods inherited from pytheos.scales.objs.MGEOS:
- |  
- |  cal_p(self, v, temp)
- |      calculate total pressure at given volume and temperature
- |      
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: pressure in GPa
- |      :note: 2017/05/10 temp must be numpy array.  If not, such as list,
- |          create an error.
- |  
- |  cal_panh(self, v, temp)
- |      calculate pressure from anharmonic contributions
- |      
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: pressure in GPa
- |  
- |  cal_pel(self, v, temp)
- |      calculate pressure from electronic contributions
- |      
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: pressure in GPa
- |  
- |  cal_pst(self, v)
- |      calculate static pressure at 300 K.
- |      
- |      :param v: unit-cell volume in A^3
- |      :return: static pressure at t_ref (=300 K) in GPa
- |  
- |  cal_pth(self, v, temp)
- |      calculate thermal pressure
- |      
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: thermal pressure in GPa
- |  
- |  cal_v(self, p, temp, min_strain=0.2, max_strain=1.0)
- |      calculate unit-cell volume at given pressure and temperature
- |      
- |      :param p: pressure in GPa
- |      :param temp: temperature in K
- |      :param min_strain: minimum strain searched for volume root
- |      :param max_strain: maximum strain searched for volume root
- |      :return: unit-cell volume in A^3
- |      :note: 2017/05/10 I found wrap function is not compatible with
- |          OrderedDict. So I convert unp array to np array.
- |  
- |  print_equations(self)
- |      show equations used for the EOS
- |  
- |  print_parameters(self)
- |      show thermoelastic parameters for the EOS
- |  
- |  print_reference(self)
- |      show reference for the EOS
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors inherited from pytheos.scales.objs.MGEOS:
- |  
- |  __dict__
- |      dictionary for instance variables (if defined)
- |  
- |  __weakref__
- |      list of weak references to the object (if defined)
-
+<pre>P_static: Jamieson
+P_thermal: Constq
+P_anharmonic: None
+P_electronic: None
 </pre>
 </div>
 </div>
@@ -12042,7 +11948,7 @@ class Dorogokupets2015(pytheos.scales.objs.MGEOS)
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dorogokupets2015_pt</span><span class="o">.</span><span class="n">print_equations</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jamieson_mgo</span><span class="o">.</span><span class="n">print_parameters</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12055,10 +11961,10 @@ class Dorogokupets2015(pytheos.scales.objs.MGEOS)
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>P_static:  vinet
-P_thermal:  dorogokupets2015
-P_anharmonic:  zharkov
-P_electronic:  zharkov
+<pre>Static:  OrderedDict([(&#39;rho0&#39;, 3.585+/-0), (&#39;c0&#39;, 6.597+/-0), (&#39;s&#39;, 1.369+/-0)])
+Thermal:  OrderedDict([(&#39;v0&#39;, 74.67451012663052+/-0.001), (&#39;gamma0&#39;, 1.32+/-0), (&#39;q&#39;, 1.0+/-0), (&#39;theta0&#39;, 760.0+/-0)])
+Anharmonic: None
+Electronic: None
 </pre>
 </div>
 </div>
@@ -12072,27 +11978,10 @@ P_electronic:  zharkov
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dorogokupets2015_pt</span><span class="o">.</span><span class="n">print_equations</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mf">74.67451012663052</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>P_static:  vinet
-P_thermal:  dorogokupets2015
-P_anharmonic:  zharkov
-P_electronic:  zharkov
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -12102,7 +11991,7 @@ P_electronic:  zharkov
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dorogokupets2015_pt</span><span class="o">.</span><span class="n">print_parameters</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jamieson_mgo</span><span class="o">.</span><span class="n">three_r</span>
 </pre></div>
 
 </div>
@@ -12113,14 +12002,13 @@ P_electronic:  zharkov
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Static:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;k0&#39;, 275.0+/-0), (&#39;k0p&#39;, 5.43+/-0)])
-Thermal:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;gamma0&#39;, 2.77+/-0), (&#39;gamma_inf&#39;, 0.43+/-0), (&#39;beta&#39;, 2.26+/-0), (&#39;theta01&#39;, 184.0+/-0), (&#39;m1&#39;, 1.5+/-0), (&#39;theta02&#39;, 137.0+/-0), (&#39;m2&#39;, 1.5+/-0)])
-Anharmonic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;a0&#39;, 0.0+/-0), (&#39;m&#39;, 0.0+/-0)])
-Electronic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;e0&#39;, 7.9e-05+/-0), (&#39;g&#39;, 0.26+/-0)])
-</pre>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>24.939153588000003</pre>
 </div>
+
 </div>
 
 </div>
@@ -12132,7 +12020,8 @@ Electronic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;e0&#3
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mf">60.37930856339099</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">eta</span><span class="p">)</span> 
+<span class="n">temp</span> <span class="o">=</span> <span class="mf">1500.</span>
 </pre></div>
 
 </div>
@@ -12145,60 +12034,28 @@ Electronic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;e0&#3
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dorogokupets2015_pt</span><span class="o">.</span><span class="n">three_r</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">jamieson_mgo</span><span class="o">.</span><span class="n">cal_p</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>24.943379399999998</pre>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='./tables/Jamieson_MgO_1.png'>
+<img src='./tables/Jamieson_MgO_2.png'></p>
 
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">*</span> <span class="p">(</span><span class="n">eta</span><span class="p">)</span> 
-<span class="n">temp</span> <span class="o">=</span> <span class="mf">3000.</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">dorogokupets2015_pt</span><span class="o">.</span><span class="n">cal_p</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;for T = &#39;</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
@@ -12216,14 +12073,60 @@ Electronic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;e0&#3
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>for T =  3000.0
- 1.000  20.72+/-0.00
- 0.950  36.00+/-0.01
- 0.900  57.33+/-0.01
- 0.850  86.89+/-0.01
- 0.800  127.75+/-0.01
- 0.750  184.28+/-0.02
- 0.700  262.84+/-0.02
+<pre>for T =  1500.0
+ 0.000  6.61+/-0.00
+ 0.005  7.39+/-0.00
+ 0.010  8.19+/-0.00
+ 0.015  9.01+/-0.00
+ 0.020  9.86+/-0.00
+ 0.025  10.73+/-0.00
+ 0.030  11.62+/-0.00
+ 0.035  12.54+/-0.00
+ 0.040  13.48+/-0.00
+ 0.045  14.45+/-0.00
+ 0.050  15.45+/-0.00
+ 0.055  16.48+/-0.00
+ 0.060  17.53+/-0.00
+ 0.065  18.62+/-0.00
+ 0.070  19.73+/-0.00
+ 0.075  20.88+/-0.00
+ 0.080  22.06+/-0.00
+ 0.085  23.28+/-0.00
+ 0.090  24.53+/-0.00
+ 0.095  25.81+/-0.00
+ 0.100  27.14+/-0.00
+ 0.105  28.50+/-0.00
+ 0.110  29.90+/-0.00
+ 0.115  31.34+/-0.00
+ 0.120  32.82+/-0.00
+ 0.125  34.35+/-0.00
+ 0.130  35.92+/-0.00
+ 0.135  37.53+/-0.00
+ 0.140  39.20+/-0.00
+ 0.145  40.91+/-0.00
+ 0.150  42.68+/-0.00
+ 0.155  44.49+/-0.00
+ 0.160  46.37+/-0.00
+ 0.165  48.29+/-0.00
+ 0.170  50.28+/-0.00
+ 0.175  52.33+/-0.00
+ 0.180  54.44+/-0.00
+ 0.185  56.61+/-0.00
+ 0.190  58.85+/-0.00
+ 0.195  61.16+/-0.00
+ 0.200  63.55+/-0.00
+ 0.205  66.00+/-0.00
+ 0.210  68.54+/-0.00
+ 0.215  71.15+/-0.00
+ 0.220  73.85+/-0.00
+ 0.225  76.64+/-0.00
+ 0.230  79.51+/-0.00
+ 0.235  82.48+/-0.00
+ 0.240  85.55+/-0.00
+ 0.245  88.71+/-0.00
+ 0.250  91.98+/-0.00
+ 0.255  95.36+/-0.00
+ 0.260  98.86+/-0.00
 </pre>
 </div>
 </div>
@@ -12232,23 +12135,13 @@ Electronic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;e0&#3
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The table is not given in this publication.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">dorogokupets2015_pt</span><span class="o">.</span><span class="n">cal_v</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">min_strain</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">v</span><span class="o">/</span><span class="n">v0</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">jamieson_mgo</span><span class="o">.</span><span class="n">cal_v</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="p">(</span><span class="n">v</span><span class="o">/</span><span class="n">v0</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12261,7 +12154,12 @@ Electronic:  OrderedDict([(&#39;v0&#39;, 60.37930856339099+/-0.001), (&#39;e0&#3
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[ 1.    0.95  0.9   0.85  0.8   0.75  0.7 ]
+<pre>[ 0.     0.005  0.01   0.015  0.02   0.025  0.03   0.035  0.04   0.045
+  0.05   0.055  0.06   0.065  0.07   0.075  0.08   0.085  0.09   0.095  0.1
+  0.105  0.11   0.115  0.12   0.125  0.13   0.135  0.14   0.145  0.15
+  0.155  0.16   0.165  0.17   0.175  0.18   0.185  0.19   0.195  0.2    0.205
+  0.21   0.215  0.22   0.225  0.23   0.235  0.24   0.245  0.25   0.255
+  0.26 ]
 </pre>
 </div>
 </div>

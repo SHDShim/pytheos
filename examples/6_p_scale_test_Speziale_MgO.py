@@ -1,14 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is part of the `pytheos` package ([Github]()). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
 
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -16,8 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
-
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -28,8 +25,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[3]:
-
+# In[4]:
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -39,64 +35,54 @@ import pytheos as eos
 
 # # 3. Compare
 
-# In[4]:
-
+# In[5]:
 
 eta = np.linspace(1., 0.60, 21)
 print(eta)
 
 
-# In[5]:
-
+# In[6]:
 
 speziale_mgo = eos.periclase.Speziale2001()
 
 
-# In[6]:
-
-
-speziale_mgo.print_equations()
-
-
 # In[7]:
-
 
 speziale_mgo.print_equations()
 
 
 # In[8]:
 
-
-speziale_mgo.print_parameters()
+speziale_mgo.print_equations()
 
 
 # In[9]:
 
-
-v0 = 74.698
+speziale_mgo.print_parameters()
 
 
 # In[10]:
 
-
-speziale_mgo.three_r
+v0 = 74.698
 
 
 # In[11]:
 
+speziale_mgo.three_r
+
+
+# In[12]:
 
 v = v0 * (eta) 
 temp = 3000.
 
 
-# In[12]:
-
+# In[13]:
 
 p = speziale_mgo.cal_p(v, temp * np.ones_like(v))
 
 
-# In[13]:
-
+# In[14]:
 
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
@@ -105,13 +91,11 @@ for eta_i, p_i in zip(eta, p):
 
 # In[15]:
 
-
 v = speziale_mgo.cal_v(p, temp * np.ones_like(p), min_strain=0.6)
 print((v/v0))
 
 
 # In[ ]:
-
 
 
 

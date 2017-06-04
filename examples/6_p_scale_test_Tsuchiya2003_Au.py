@@ -1,14 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is part of the `pytheos` package ([Github]()). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
 
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -16,8 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
-
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -28,8 +25,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[3]:
-
+# In[4]:
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -39,80 +35,68 @@ import pytheos as eos
 
 # # 3. Compare
 
-# In[4]:
-
+# In[5]:
 
 eta = np.linspace(0., 0.34, 18)
 print(eta)
 
 
-# In[17]:
-
+# In[6]:
 
 tsuchiya_au = eos.gold.Tsuchiya2003()
 
 
-# In[18]:
-
+# In[7]:
 
 help(tsuchiya_au)
 
 
-# In[19]:
-
-
-tsuchiya_au.print_equations()
-
-
-# In[20]:
-
+# In[8]:
 
 tsuchiya_au.print_equations()
 
 
-# In[21]:
+# In[9]:
 
+tsuchiya_au.print_equations()
+
+
+# In[10]:
 
 tsuchiya_au.print_parameters()
 
 
-# In[22]:
-
+# In[11]:
 
 v0 = 67.84742110765599
 
 
-# In[23]:
-
+# In[12]:
 
 tsuchiya_au.three_r
 
 
-# In[29]:
-
+# In[13]:
 
 v = v0 * (1.-eta) 
 temp = 2500.
 
 
-# In[30]:
-
+# In[14]:
 
 p = tsuchiya_au.cal_p(v, temp * np.ones_like(v))
 
 
 # <img src='./tables/Tsuchiya_Au.png'>
 
-# In[31]:
-
+# In[15]:
 
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
 
 
-# In[27]:
-
+# In[16]:
 
 v = tsuchiya_au.cal_v(p, temp * np.ones_like(p), min_strain=0.6)
 print(1.-(v/v0))
@@ -124,20 +108,17 @@ print(1.-(v/v0))
 # 
 # - Therefore, I readjusted the eos parameters from Tsuchiya to match their table values better.  Users have a choice if they use the table values or the parameter values.  If `reproduce_table` sets to `True`, the difference reduces to 0.1 GPa.
 
-# In[36]:
-
+# In[17]:
 
 tsuchiya_au = eos.gold.Tsuchiya2003(reproduce_table=True)
 
 
-# In[37]:
-
+# In[18]:
 
 p = tsuchiya_au.cal_p(v, temp * np.ones_like(v))
 
 
-# In[38]:
-
+# In[19]:
 
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
@@ -145,7 +126,6 @@ for eta_i, p_i in zip(eta, p):
 
 
 # In[ ]:
-
 
 
 

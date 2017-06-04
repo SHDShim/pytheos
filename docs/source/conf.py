@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # pytheos documentation build configuration file, created by
-# sphinx-quickstart on Sat Jun  3 15:30:49 2017.
+# sphinx-quickstart on Sat Jun  3 22:25:29 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -19,7 +19,7 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../pytheos'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # -- General configuration ------------------------------------------------

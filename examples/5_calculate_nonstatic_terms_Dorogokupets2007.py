@@ -1,13 +1,12 @@
 
 # coding: utf-8
 
-# ## Source and citation
-# 
-# - This notebook is a part of the `pytheos` package ([Github](http://github.com/SHDShim/pytheos)). 
-# 
-# - __[Citation]__ S.-H. Shim (2017) Pytheos - python equations of state tools. doi:
-
 # In[1]:
+
+get_ipython().magic('cat 0Source_Citation.txt')
+
+
+# In[2]:
 
 get_ipython().magic('matplotlib inline')
 # %matplotlib notebook # for interactive
@@ -15,7 +14,7 @@ get_ipython().magic('matplotlib inline')
 
 # For high dpi displays.
 
-# In[2]:
+# In[3]:
 
 get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
@@ -26,7 +25,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. General setup
 
-# In[3]:
+# In[4]:
 
 import uncertainties as uct
 import numpy as np
@@ -35,7 +34,7 @@ from uncertainties import unumpy as unp
 import pytheos as eos
 
 
-# In[4]:
+# In[5]:
 
 v0 = 3.9231**3
 v = np.linspace(v0, v0 * 0.8, 20)
@@ -43,38 +42,38 @@ v = np.linspace(v0, v0 * 0.8, 20)
 
 # # 2. Calculate thermal pressure
 
-# In[5]:
+# In[6]:
 
 p_th = eos.dorogokupets2007_pth(v, 2000., v0, 2.82, 1.83, 8.11, 220., 1, 4)
 
 
 # # 3. Calculate pressure from anharmonicity
 
-# In[6]:
+# In[7]:
 
 help(eos.zharkov_panh)
 
 
-# In[7]:
+# In[8]:
 
 p_anh = eos.zharkov_panh(v, 2000., v0, -166.9e-6, 4.32, 1, 4)
 
 
 # # 4. Calculate pressure from electronic effects
 
-# In[8]:
+# In[9]:
 
 help(eos.zharkov_pel)
 
 
-# In[9]:
+# In[10]:
 
 p_el = eos.zharkov_pel(v, 2000., v0, 260.e-6, 2.4, 1, 4)
 
 
 # # 5. Plot with respect to volume
 
-# In[10]:
+# In[11]:
 
 plt.plot(v, p_th, label='$P_{th}$')
 plt.plot(v, p_el, label='$P_{el}$')
@@ -86,22 +85,22 @@ plt.legend();
 
 # We call the built-in dorogokupets2007 scale in `pytheos`.
 
-# In[11]:
+# In[12]:
 
 dorogokupets2007_pt = eos.platinum.Dorogokupets2007()
 
 
-# In[12]:
+# In[13]:
 
 help(dorogokupets2007_pt)
 
 
-# In[13]:
+# In[14]:
 
 p = dorogokupets2007_pt.cal_p(v, 2000.)
 
 
-# In[14]:
+# In[15]:
 
 plt.plot(unp.nominal_values(p), p_th, label='$P_{th}$')
 plt.plot(unp.nominal_values(p), p_el, label='$P_{el}$')
