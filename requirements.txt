@@ -1,0 +1,5 @@
+numpy
+matplotlib
+uncertainties
+scipy
+lmfit
