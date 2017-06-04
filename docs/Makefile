@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = pytheos
 SOURCEDIR     = source
-# BUILDDIR    = build
+# BUILDDIR      = build
 BUILDDIR      = ../../pytheos-docs
 
 

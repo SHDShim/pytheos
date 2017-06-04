@@ -7,15 +7,19 @@ PYTHEOS
 Overview
 --------
 
-Pythoeos provides a versatile tool set for calculating pressure from number of
-built-in pressure scales, converting pressure scales, fitting pressure-volume
-and pressure-volume-temperature data to a wide range of equations and their
-combinations.
+Pytheos provides a versatile tool set for calculating pressure from number of
+built-in pressure scales, converting pressure scales, and fitting pressure-volume
+and pressure-volume-temperature data sets.
+
+It provides robust uncertainty propagations using the uncertainties package.
+
+It provides flexible fitting using the lmfit package.  Pytheos allows for fitting
+using a wide range of equations and their combinations.
 
 Install
 -------
 
-Pythoeos is a pure python package, and can be installed from source or with
+Pytheos is a pure python package, and can be installed from source or with
 ``pip install pytheos``.
 
 Anaconda users may try: ``conda install -c shdshim pytheos``.
@@ -30,10 +34,12 @@ scales as well.
 Examples and Tutorials
 ----------------------
 
-This package includes number of examples in Jupyter Notebook (under examples
+The pytheos package includes examples in Jupyter Notebook (under the examples
 folder), which demonstrate a range of operations, calculations, and fittings
-you can make with pytheos. In fact, pytheos is designed to support data
+you can make with pytheos. Pytheos is designed to support data
 analysis using Jupyter Notebook as well as python scripts.
+
+Documentation is available at: https://shdshim.github.io/pytheos-docs/.
 
 How to cite
 -----------
