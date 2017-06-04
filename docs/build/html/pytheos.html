@@ -1,0 +1,1999 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pytheos package &#8212; pytheos 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pytheos-package">
+<h1>pytheos package<a class="headerlink" href="#pytheos-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pytheos.plot.html">pytheos.plot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pytheos.plot.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytheos.plot.html#module-pytheos.plot.static_fit">pytheos.plot.static_fit module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytheos.plot.html#module-pytheos.plot.thermal_fit">pytheos.plot.thermal_fit module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytheos.plot.html#module-pytheos.plot">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pytheos.conversion">
+<span id="pytheos-conversion-module"></span><h2>pytheos.conversion module<a class="headerlink" href="#module-pytheos.conversion" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.conversion.moduli_to_velocities">
+<code class="descclassname">pytheos.conversion.</code><code class="descname">moduli_to_velocities</code><span class="sig-paren">(</span><em>rho</em>, <em>K_s</em>, <em>G</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.conversion.moduli_to_velocities" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert moduli to velocities
+mainly to support Burnman operations</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rho</strong> – density in kg/m^3</li>
+<li><strong>v_phi</strong> – adiabatic bulk modulus in Pa</li>
+<li><strong>v_s</strong> – shear modulus in Pa</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk sound speed and shear velocity</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.conversion.velocities_to_moduli">
+<code class="descclassname">pytheos.conversion.</code><code class="descname">velocities_to_moduli</code><span class="sig-paren">(</span><em>rho</em>, <em>v_phi</em>, <em>v_s</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.conversion.velocities_to_moduli" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert velocities to moduli
+mainly to support Burnman operations</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rho</strong> – density in kg/m^3</li>
+<li><strong>v_phi</strong> – bulk sound speed in m/s</li>
+<li><strong>v_s</strong> – shear velocity in m/s</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">K_s and G</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.conversion.vol_mol2uc">
+<code class="descclassname">pytheos.conversion.</code><code class="descname">vol_mol2uc</code><span class="sig-paren">(</span><em>v_mol</em>, <em>z_uc</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.conversion.vol_mol2uc" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert unit cell volume in A^3 to molar volume in m^3/mol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v_mol</strong> – molar volume in m^3/mol</li>
+<li><strong>z_uc</strong> – number of formula unit in a unit cell (z)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">unit-cell volume in A^3</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.conversion.vol_uc2mol">
+<code class="descclassname">pytheos.conversion.</code><code class="descname">vol_uc2mol</code><span class="sig-paren">(</span><em>v_uc</em>, <em>z_uc</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.conversion.vol_uc2mol" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert unit cell volume in A^3 to molar volume in m^3/mol</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v_uc</strong> – unit-cell volume in A^3</li>
+<li><strong>z_uc</strong> – number of formula unit in a unit cell (z)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">molar volume</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_anharmonic">
+<span id="pytheos-eqn-anharmonic-module"></span><h2>pytheos.eqn_anharmonic module<a class="headerlink" href="#module-pytheos.eqn_anharmonic" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_anharmonic.zharkov_panh">
+<code class="descclassname">pytheos.eqn_anharmonic.</code><code class="descname">zharkov_panh</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>a0</em>, <em>m</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_anharmonic.zharkov_panh" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure from anharmonicity for Zharkov equation
+the equation is from Dorogokupets 2015</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>a0</strong> – parameter in K-1 for the Zharkov equation</li>
+<li><strong>m</strong> – parameter for the Zharkov equation</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>three_r</strong> – 3 times gas constant</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">anharmonic contribution for pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_bm3">
+<span id="pytheos-eqn-bm3-module"></span><h2>pytheos.eqn_bm3 module<a class="headerlink" href="#module-pytheos.eqn_bm3" title="Permalink to this headline">¶</a></h2>
+<p>2017/05/03 No need to put isuncertainties because there is no particularly
+function to be problematic to the functions here.</p>
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_big_F">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_big_F</code><span class="sig-paren">(</span><em>p</em>, <em>v</em>, <em>v0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_big_F" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate big F for linearlized form
+not fully tested</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – </li>
+<li><strong>f</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_dPdV">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_dPdV</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>precision=1e-05</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_dPdV" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate dP/dV for numerical calculation of bulk modulus
+according to test this differs from analytical result by 1.e-5</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at different conditions</li>
+<li><strong>precision</strong> – precision for numerical calculation (default = 1.e-5*v0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dP/dV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_g">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_g</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>g0</em>, <em>g0p</em>, <em>k0</em>, <em>k0p</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_g" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate shear modulus at given pressure.
+not fully tested with mdaap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>v0</strong> – volume at reference condition</li>
+<li><strong>g0</strong> – shear modulus at reference condition</li>
+<li><strong>g0p</strong> – pressure derivative of shear modulus at reference condition</li>
+<li><strong>k0</strong> – bulk modulus at reference condition</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference condition</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">shear modulus at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_k">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_k</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_k" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus, wrapper for cal_k_bm3
+cannot handle uncertainties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at different conditions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk modulus at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_k_num">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_k_num</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>precision=1e-05</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_k_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus numerically from volume, not pressure
+according to test this differs from analytical result by 1.e-5</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at different conditions</li>
+<li><strong>precision</strong> – precision for numerical calculation (default = 1.e-5*v0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dP/dV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_p">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_p</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>p_ref=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure from 3rd order Birch-Murnathan equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume at different pressures</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at different conditions</li>
+<li><strong>p_ref</strong> – reference pressure (default = 0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_small_f">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_small_f</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_small_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate finite strain little f for linearized form
+not fully tested</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">small f</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_v">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_v</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>p_ref=0.0</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>find volume at given pressure using brenth in scipy.optimize</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at different conditions</li>
+<li><strong>p_ref</strong> – reference pressure (default = 0)</li>
+<li><strong>min_strain</strong> – minimum strain value to find solution (default = 0.01)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">volume at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.bm3_v_single">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">bm3_v_single</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>p_ref=0.0</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.bm3_v_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>find volume at given pressure using brenth in scipy.optimize
+this is for single p value, not vectorized
+this cannot handle uncertainties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>v0</strong> – volume at reference conditions</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at different conditions</li>
+<li><strong>p_ref</strong> – reference pressure (default = 0)</li>
+<li><strong>min_strain</strong> – minimum strain value to find solution (default = 0.01)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">volume at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_big_F">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_big_F</code><span class="sig-paren">(</span><em>p</em>, <em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_big_F" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate finite strain big F for linearized form
+not fully tested</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>f</strong> – small f</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">big F</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_g_bm3">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_g_bm3</code><span class="sig-paren">(</span><em>p</em>, <em>g</em>, <em>k</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_g_bm3" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate shear modulus at given pressure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>g</strong> – [g0, g0p]</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">shear modulus at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_k_bm3">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_k_bm3</code><span class="sig-paren">(</span><em>p</em>, <em>k</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_k_bm3" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk modulus at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_k_bm3_from_v">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_k_bm3_from_v</code><span class="sig-paren">(</span><em>v</em>, <em>k</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_k_bm3_from_v" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_p_bm3">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_p_bm3</code><span class="sig-paren">(</span><em>v</em>, <em>k</em>, <em>p_ref=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_p_bm3" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure from 3rd order Birch-Murnaghan equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume at different pressures</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+<li><strong>p_ref</strong> – reference pressure, default = 0.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">static pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_small_f">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_small_f</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_small_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate finite strain little f for linearized form
+not fully tested</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume</li>
+<li><strong>v0</strong> – volume at reference condition</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">small f</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_bm3.cal_v_bm3">
+<code class="descclassname">pytheos.eqn_bm3.</code><code class="descname">cal_v_bm3</code><span class="sig-paren">(</span><em>p</em>, <em>k</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_bm3.cal_v_bm3" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate volume from bm3 equation. wrapper for bm3_v</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">volume at high pressure</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_debye">
+<span id="pytheos-eqn-debye-module"></span><h2>pytheos.eqn_debye module<a class="headerlink" href="#module-pytheos.eqn_debye" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_debye.debye_E">
+<code class="descclassname">pytheos.eqn_debye.</code><code class="descname">debye_E</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_debye.debye_E" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Debye energy using old fortran routine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Params x:</th><td class="field-body">Debye x value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Debye energy</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body">this is a wraper function (vectorization) for debye_E_single</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_debye.debye_E_single">
+<code class="descclassname">pytheos.eqn_debye.</code><code class="descname">debye_E_single</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_debye.debye_E_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Debye energy using old fortran routine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Params x:</th><td class="field-body">Debye x value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Debye energy</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_electronic">
+<span id="pytheos-eqn-electronic-module"></span><h2>pytheos.eqn_electronic module<a class="headerlink" href="#module-pytheos.eqn_electronic" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_electronic.tsuchiya_pel">
+<code class="descclassname">pytheos.eqn_electronic.</code><code class="descname">tsuchiya_pel</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>a</em>, <em>b</em>, <em>c</em>, <em>d</em>, <em>n</em>, <em>z</em>, <em>three_r=24.943379399999998</em>, <em>t_ref=300.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_electronic.tsuchiya_pel" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate electronic contributions in pressure for the Tsuchiya equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>a</strong> – parameter for the Tsuchiya equation</li>
+<li><strong>b</strong> – parameter for the Tsuchiya equation</li>
+<li><strong>c</strong> – parameter for the Tsuchiya equation</li>
+<li><strong>d</strong> – parameter for the Tsuchiya equation</li>
+<li><strong>n</strong> – number of atoms in a formula unit</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+<li><strong>three_r</strong> – 3 times gas constant</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">electronic contribution in GPa</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">n, z, three_r are not used but in there for consistency
+with other electronic contribution equations</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_electronic.zharkov_pel">
+<code class="descclassname">pytheos.eqn_electronic.</code><code class="descname">zharkov_pel</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>e0</em>, <em>g</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_electronic.zharkov_pel" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate electronic contributions in pressure for the Zharkov equation
+the equation can be found in Sokolova and Dorogokupets 2013</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>e0</strong> – parameter in K-1 for the Zharkov equation</li>
+<li><strong>g</strong> – parameter for the Zharkov equation</li>
+<li><strong>n</strong> – number of atoms in a formula unit</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+<li><strong>three_r</strong> – 3 times gas constant</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">electronic contribution in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_hugoniot">
+<span id="pytheos-eqn-hugoniot-module"></span><h2>pytheos.eqn_hugoniot module<a class="headerlink" href="#module-pytheos.eqn_hugoniot" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_hugoniot.hugoniot_p">
+<code class="descclassname">pytheos.eqn_hugoniot.</code><code class="descname">hugoniot_p</code><span class="sig-paren">(</span><em>rho</em>, <em>rho0</em>, <em>c0</em>, <em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_hugoniot.hugoniot_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure along a Hugoniot</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rho</strong> – density in g/cm^3</li>
+<li><strong>rho0</strong> – density at 1 bar in g/cm^3</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_hugoniot.hugoniot_rho">
+<code class="descclassname">pytheos.eqn_hugoniot.</code><code class="descname">hugoniot_rho</code><span class="sig-paren">(</span><em>p</em>, <em>rho0</em>, <em>c0</em>, <em>s</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_hugoniot.hugoniot_rho" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate density in g/cm^3 from a hugoniot curve</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>rho0</strong> – density at 1 bar in g/cm^3</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+<li><strong>min_strain</strong> – defining minimum v/v0 value to search volume for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">density in g/cm^3</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">this is a wrapper function by vectorizing hugoniot_rho_single</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_hugoniot.hugoniot_rho_single">
+<code class="descclassname">pytheos.eqn_hugoniot.</code><code class="descname">hugoniot_rho_single</code><span class="sig-paren">(</span><em>p</em>, <em>rho0</em>, <em>c0</em>, <em>s</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_hugoniot.hugoniot_rho_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate density in g/cm^3 from a hugoniot curve</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>rho0</strong> – density at 1 bar in g/cm^3</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+<li><strong>min_strain</strong> – defining minimum v/v0 value to search volume for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">density in g/cm^3</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_hugoniot.hugoniot_t">
+<code class="descclassname">pytheos.eqn_hugoniot.</code><code class="descname">hugoniot_t</code><span class="sig-paren">(</span><em>rho</em>, <em>rho0</em>, <em>c0</em>, <em>s</em>, <em>gamma0</em>, <em>q</em>, <em>theta0</em>, <em>n</em>, <em>mass</em>, <em>three_r=24.943379399999998</em>, <em>t_ref=300.0</em>, <em>c_v=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_hugoniot.hugoniot_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate temperature along a hugoniot</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rho</strong> – density in g/cm^3</li>
+<li><strong>rho0</strong> – density at 1 bar in g/cm^3</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature in K</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>mass</strong> – molar mass in gram</li>
+<li><strong>three_r</strong> – 3 times gas constant.
+Jamieson modified this value to compensate for mismatches</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+<li><strong>c_v</strong> – heat capacity, see Jamieson 1983 for detail</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">temperature along hugoniot</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_hugoniot.hugoniot_t_single">
+<code class="descclassname">pytheos.eqn_hugoniot.</code><code class="descname">hugoniot_t_single</code><span class="sig-paren">(</span><em>rho</em>, <em>rho0</em>, <em>c0</em>, <em>s</em>, <em>gamma0</em>, <em>q</em>, <em>theta0</em>, <em>n</em>, <em>mass</em>, <em>three_r=24.943379399999998</em>, <em>t_ref=300.0</em>, <em>c_v=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_hugoniot.hugoniot_t_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>internal function to calculate pressure along Hugoniot</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rho</strong> – density in g/cm^3</li>
+<li><strong>rho0</strong> – density at 1 bar in g/cm^3</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature in K</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>mass</strong> – molar mass in gram</li>
+<li><strong>three_r</strong> – 3 times gas constant.
+Jamieson modified this value to compensate for mismatches</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+<li><strong>c_v</strong> – heat capacity, see Jamieson 1983 for detail</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">temperature along hugoniot</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_jamieson">
+<span id="pytheos-eqn-jamieson-module"></span><h2>pytheos.eqn_jamieson module<a class="headerlink" href="#module-pytheos.eqn_jamieson" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>2017/05/18 At the moment the functions here are not being revealed</dt>
+<dd>to the users.  I need to check if any of these functions are being
+called from other functions in pytheos.</dd>
+</dl>
+<dl class="function">
+<dt id="pytheos.eqn_jamieson.hugoniot_p_nlin">
+<code class="descclassname">pytheos.eqn_jamieson.</code><code class="descname">hugoniot_p_nlin</code><span class="sig-paren">(</span><em>rho</em>, <em>rho0</em>, <em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_jamieson.hugoniot_p_nlin" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure along a Hugoniot throug nonlinear equations
+presented in Jameison 1982</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rho</strong> – density in g/cm^3</li>
+<li><strong>rho0</strong> – density at 1 bar in g/cm^3</li>
+<li><strong>a</strong> – prefactor for nonlinear fit of Hugoniot data</li>
+<li><strong>b</strong> – prefactor for nonlinear fit of Hugoniot data</li>
+<li><strong>c</strong> – prefactor for nonlinear fit of Hugoniot data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">pressure along Hugoniot in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_jamieson.jamieson_pst">
+<code class="descclassname">pytheos.eqn_jamieson.</code><code class="descname">jamieson_pst</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>c0</em>, <em>s</em>, <em>gamma0</em>, <em>q</em>, <em>theta0</em>, <em>n</em>, <em>z</em>, <em>mass</em>, <em>c_v</em>, <em>three_r=24.943379399999998</em>, <em>t_ref=300.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_jamieson.jamieson_pst" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate static pressure at 300 K from Hugoniot data using the constq
+formulation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature in K</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>mass</strong> – molar mass in gram</li>
+<li><strong>c_v</strong> – heat capacity</li>
+<li><strong>three_r</strong> – 3 times gas constant.
+Jamieson modified this value to compensate for mismatches</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">static pressure in GPa</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">2017/05/18 I am unsure if this is actually being used in pytheos</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_jamieson.jamieson_pth">
+<code class="descclassname">pytheos.eqn_jamieson.</code><code class="descname">jamieson_pth</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>c0</em>, <em>s</em>, <em>gamma0</em>, <em>q</em>, <em>theta0</em>, <em>n</em>, <em>z</em>, <em>mass</em>, <em>c_v</em>, <em>three_r=24.943379399999998</em>, <em>t_ref=300.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_jamieson.jamieson_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure from Hugoniot data using the constq
+formulation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>c0</strong> – velocity at 1 bar in km/s</li>
+<li><strong>s</strong> – slope of the velocity change</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature in K</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>mass</strong> – molar mass in gram</li>
+<li><strong>c_v</strong> – heat capacity</li>
+<li><strong>three_r</strong> – 3 times gas constant.
+Jamieson modified this value to compensate for mismatches</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">static pressure in GPa</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">2017/05/18 I am unsure if this is actually being used in pytheos</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_kunc">
+<span id="pytheos-eqn-kunc-module"></span><h2>pytheos.eqn_kunc module<a class="headerlink" href="#module-pytheos.eqn_kunc" title="Permalink to this headline">¶</a></h2>
+<p>2017/05/03 kunc_k is not available yet because I did not derive analytical
+form yet.</p>
+<dl class="function">
+<dt id="pytheos.eqn_kunc.cal_p_kunc">
+<code class="descclassname">pytheos.eqn_kunc.</code><code class="descname">cal_p_kunc</code><span class="sig-paren">(</span><em>v</em>, <em>k</em>, <em>order=5</em>, <em>uncertainties=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_kunc.cal_p_kunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Kunc EOS,
+see Dorogokupets2015 for functional form</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+<li><strong>order</strong> – order for the Kunc equation</li>
+<li><strong>uncertainties</strong> – use of uncertainties package</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pressure in GPa</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">internal function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_kunc.kunc_dPdV">
+<code class="descclassname">pytheos.eqn_kunc.</code><code class="descname">kunc_dPdV</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>order=5</em>, <em>precision=1e-05</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_kunc.kunc_dPdV" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate dP/dV for numerical calculation of bulk modulus
+according to test this differs from analytical result by 1.e-5</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>precision</strong> – precision for numerical calc (default = 1.e-5 * v0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dP/dV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_kunc.kunc_k_num">
+<code class="descclassname">pytheos.eqn_kunc.</code><code class="descname">kunc_k_num</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>order=5</em>, <em>precision=1e-05</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_kunc.kunc_k_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus numerically from volume, not pressure
+according to test this differs from analytical result by 1.e-5</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>precision</strong> – precision for numerical calc (default = 1.e-5 * v0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk modulus</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_kunc.kunc_p">
+<code class="descclassname">pytheos.eqn_kunc.</code><code class="descname">kunc_p</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>order=5</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_kunc.kunc_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Kunc EOS
+see Dorogokupets 2015 for detail</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>order</strong> – order for the Kunc equation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_kunc.kunc_v">
+<code class="descclassname">pytheos.eqn_kunc.</code><code class="descname">kunc_v</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>order=5</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_kunc.kunc_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>find volume at given pressure using brenth in scipy.optimize</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>order</strong> – order of Kunc function</li>
+<li><strong>min_strain</strong> – defining minimum v/v0 value to search volume for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">unit-cell volume at high pressure in GPa</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">a wrapper function vectorizing kunc_v_single</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_kunc.kunc_v_single">
+<code class="descclassname">pytheos.eqn_kunc.</code><code class="descname">kunc_v_single</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>order=5</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_kunc.kunc_v_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>find volume at given pressure using brenth in scipy.optimize</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>order</strong> – order of Kunc function</li>
+<li><strong>min_strain</strong> – defining minimum v/v0 value to search volume for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">unit-cell volume at high pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_therm">
+<span id="pytheos-eqn-therm-module"></span><h2>pytheos.eqn_therm module<a class="headerlink" href="#module-pytheos.eqn_therm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_therm.alphakt_pth">
+<code class="descclassname">pytheos.eqn_therm.</code><code class="descname">alphakt_pth</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>alpha0</em>, <em>k0</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm.alphakt_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure from thermal expansion and bulk modulus</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>alpha0</strong> – thermal expansion parameter at 1 bar in K-1</li>
+<li><strong>k0</strong> – bulk modulus in GPa</li>
+<li><strong>n</strong> – number of atoms in a formula unit</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>t_ref</strong> – reference temperature</li>
+<li><strong>three_r</strong> – 3R in case adjustment is needed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">thermal pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_therm_Dorogokupets2007">
+<span id="pytheos-eqn-therm-dorogokupets2007-module"></span><h2>pytheos.eqn_therm_Dorogokupets2007 module<a class="headerlink" href="#module-pytheos.eqn_therm_Dorogokupets2007" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_therm_Dorogokupets2007.altshuler_debyetemp">
+<code class="descclassname">pytheos.eqn_therm_Dorogokupets2007.</code><code class="descname">altshuler_debyetemp</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>gamma_inf</em>, <em>beta</em>, <em>theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Dorogokupets2007.altshuler_debyetemp" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Debye temperature for Altshuler equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>gamma_inf</strong> – Gruneisen parameter at infinite pressure</li>
+<li><strong>beta</strong> – volume dependence of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Debye temperature in K</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Dorogokupets2007.altshuler_grun">
+<code class="descclassname">pytheos.eqn_therm_Dorogokupets2007.</code><code class="descname">altshuler_grun</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>gamma_inf</em>, <em>beta</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Dorogokupets2007.altshuler_grun" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Gruneisen parameter for Altshuler equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>gamma_inf</strong> – Gruneisen parameter at infinite pressure</li>
+<li><strong>beta</strong> – volume dependence of Gruneisen parameter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Gruneisen parameter</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Dorogokupets2007.dorogokupets2007_pth">
+<code class="descclassname">pytheos.eqn_therm_Dorogokupets2007.</code><code class="descname">dorogokupets2007_pth</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>gamma0</em>, <em>gamma_inf</em>, <em>beta</em>, <em>theta0</em>, <em>n</em>, <em>z</em>, <em>three_r=24.943379399999998</em>, <em>t_ref=300.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Dorogokupets2007.dorogokupets2007_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure for Dorogokupets 2007 EOS</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>gamma_inf</strong> – Gruneisen parameter at infinite pressure</li>
+<li><strong>beta</strong> – volume dependence of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>three_r</strong> – 3 times gas constant.
+Jamieson modified this value to compensate for mismatches</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">thermal pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_therm_Dorogokupets2015">
+<span id="pytheos-eqn-therm-dorogokupets2015-module"></span><h2>pytheos.eqn_therm_Dorogokupets2015 module<a class="headerlink" href="#module-pytheos.eqn_therm_Dorogokupets2015" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.eqn_therm_Dorogokupets2015.dorogokupets2015_pth">
+<code class="descclassname">pytheos.eqn_therm_Dorogokupets2015.</code><code class="descname">dorogokupets2015_pth</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>gamma0</em>, <em>gamma_inf</em>, <em>beta</em>, <em>theta01</em>, <em>m1</em>, <em>theta02</em>, <em>m2</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Dorogokupets2015.dorogokupets2015_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure for Dorogokupets 2015 EOS</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>gamma_inf</strong> – Gruneisen parameter at infinite pressure</li>
+<li><strong>beta</strong> – volume dependence of Gruneisen parameter</li>
+<li><strong>theta01</strong> – Debye temperature at 1 bar in K</li>
+<li><strong>m1</strong> – weighting factor, see Dorogokupets 2015 for detail</li>
+<li><strong>theta02</strong> – Debye temperature at 1 bar in K</li>
+<li><strong>m2</strong> – weighting factor, see Dorogokupets 2015 for detail</li>
+<li><strong>n</strong> – number of elements in a chemical formula</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>three_r</strong> – 3 times gas constant.
+Jamieson modified this value to compensate for mismatches</li>
+<li><strong>t_ref</strong> – reference temperature, 300 K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">thermal pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_therm_Speziale">
+<span id="pytheos-eqn-therm-speziale-module"></span><h2>pytheos.eqn_therm_Speziale module<a class="headerlink" href="#module-pytheos.eqn_therm_Speziale" title="Permalink to this headline">¶</a></h2>
+<p>2017/05/03 I believe now I settle down with the uncertainties issue
+through <cite>isuncertainties</cite> check.</p>
+<dl class="function">
+<dt id="pytheos.eqn_therm_Speziale.integrate_gamma">
+<code class="descclassname">pytheos.eqn_therm_Speziale.</code><code class="descname">integrate_gamma</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>q0</em>, <em>q1</em>, <em>theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Speziale.integrate_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>internal function to calculate Debye temperature</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q0</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>q1</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Debye temperature in K</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Speziale.speziale_debyetemp">
+<code class="descclassname">pytheos.eqn_therm_Speziale.</code><code class="descname">speziale_debyetemp</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>q0</em>, <em>q1</em>, <em>theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Speziale.speziale_debyetemp" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Debye temperature for the Speziale equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q0</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>q1</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Debye temperature in K</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Speziale.speziale_grun">
+<code class="descclassname">pytheos.eqn_therm_Speziale.</code><code class="descname">speziale_grun</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>q0</em>, <em>q1</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Speziale.speziale_grun" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Gruneisen parameter for the Speziale equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q0</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>q1</strong> – logarithmic derivative of Gruneisen parameter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Gruneisen parameter</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Speziale.speziale_pth">
+<code class="descclassname">pytheos.eqn_therm_Speziale.</code><code class="descname">speziale_pth</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>gamma0</em>, <em>q0</em>, <em>q1</em>, <em>theta0</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Speziale.speziale_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure for the Speziale equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q0</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>q1</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+<li><strong>n</strong> – number of atoms in a formula unit</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>t_ref</strong> – reference temperature</li>
+<li><strong>three_r</strong> – 3R in case adjustment is needed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">thermal pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_therm_Tange">
+<span id="pytheos-eqn-therm-tange-module"></span><h2>pytheos.eqn_therm_Tange module<a class="headerlink" href="#module-pytheos.eqn_therm_Tange" title="Permalink to this headline">¶</a></h2>
+<p>2017/05/03 I believe now I settle down with the uncertainties issue
+through <cite>isuncertainties</cite> check.</p>
+<dl class="function">
+<dt id="pytheos.eqn_therm_Tange.tange_debyetemp">
+<code class="descclassname">pytheos.eqn_therm_Tange.</code><code class="descname">tange_debyetemp</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>a</em>, <em>b</em>, <em>theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Tange.tange_debyetemp" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Debye temperature for the Tange equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>a</strong> – volume-independent adjustable parameters</li>
+<li><strong>b</strong> – volume-independent adjustable parameters</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Debye temperature in K</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Tange.tange_grun">
+<code class="descclassname">pytheos.eqn_therm_Tange.</code><code class="descname">tange_grun</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Tange.tange_grun" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Gruneisen parameter for the Tange equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>a</strong> – volume-independent adjustable parameters</li>
+<li><strong>b</strong> – volume-independent adjustable parameters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Gruneisen parameter</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_Tange.tange_pth">
+<code class="descclassname">pytheos.eqn_therm_Tange.</code><code class="descname">tange_pth</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>gamma0</em>, <em>a</em>, <em>b</em>, <em>theta0</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_Tange.tange_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure for the Tange equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature in K</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>a</strong> – volume-independent adjustable parameters</li>
+<li><strong>b</strong> – volume-independent adjustable parameters</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar in K</li>
+<li><strong>n</strong> – number of atoms in a formula unit</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>t_ref</strong> – reference temperature</li>
+<li><strong>three_r</strong> – 3R in case adjustment is needed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">thermal pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_therm_constq">
+<span id="pytheos-eqn-therm-constq-module"></span><h2>pytheos.eqn_therm_constq module<a class="headerlink" href="#module-pytheos.eqn_therm_constq" title="Permalink to this headline">¶</a></h2>
+<p>2017/05/03 I believe now I settle down with the uncertainties issue
+through <cite>isuncertainties</cite> check.</p>
+<dl class="function">
+<dt id="pytheos.eqn_therm_constq.constq_debyetemp">
+<code class="descclassname">pytheos.eqn_therm_constq.</code><code class="descname">constq_debyetemp</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>q</em>, <em>theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_constq.constq_debyetemp" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Debye temperature for constant q</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature at 1 bar</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Debye temperature in K</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_constq.constq_grun">
+<code class="descclassname">pytheos.eqn_therm_constq.</code><code class="descname">constq_grun</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>gamma0</em>, <em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_constq.constq_grun" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Gruneisen parameter for constant q</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Grunseinen parameter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Gruneisen parameter at a given volume</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_therm_constq.constq_pth">
+<code class="descclassname">pytheos.eqn_therm_constq.</code><code class="descname">constq_pth</code><span class="sig-paren">(</span><em>v</em>, <em>temp</em>, <em>v0</em>, <em>gamma0</em>, <em>q</em>, <em>theta0</em>, <em>n</em>, <em>z</em>, <em>t_ref=300.0</em>, <em>three_r=24.943379399999998</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_therm_constq.constq_pth" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate thermal pressure for constant q</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>temp</strong> – temperature</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>gamma0</strong> – Gruneisen parameter at 1 bar</li>
+<li><strong>q</strong> – logarithmic derivative of Gruneisen parameter</li>
+<li><strong>theta0</strong> – Debye temperature in K</li>
+<li><strong>n</strong> – number of atoms in a formula unit</li>
+<li><strong>z</strong> – number of formula unit in a unit cell</li>
+<li><strong>t_ref</strong> – reference temperature</li>
+<li><strong>three_r</strong> – 3R in case adjustment is needed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">thermal pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.eqn_vinet">
+<span id="pytheos-eqn-vinet-module"></span><h2>pytheos.eqn_vinet module<a class="headerlink" href="#module-pytheos.eqn_vinet" title="Permalink to this headline">¶</a></h2>
+<p>2017/05/03
+Solve uncertainties problem by adding new function <cite>isuncertainties</cite></p>
+<dl class="function">
+<dt id="pytheos.eqn_vinet.cal_k_vinet">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">cal_k_vinet</code><span class="sig-paren">(</span><em>p</em>, <em>k</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.cal_k_vinet" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus in GPa</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk modulus at high pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.cal_k_vinet_from_v">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">cal_k_vinet_from_v</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.cal_k_vinet_from_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus in GPa</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk modulus at high pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.cal_p_vinet">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">cal_p_vinet</code><span class="sig-paren">(</span><em>v</em>, <em>k</em>, <em>uncertainties=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.cal_p_vinet" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure from vinet equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – volume at different pressures</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">static pressure</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">internal function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.cal_v_vinet">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">cal_v_vinet</code><span class="sig-paren">(</span><em>p</em>, <em>k</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.cal_v_vinet" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate volume from vinet equation. wrapper for vinet_v</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>k</strong> – [v0, k0, k0p]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">unit cell volume at high pressure in A^3</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">internal function</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.vinet_dPdV">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">vinet_dPdV</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>precision=1e-05</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.vinet_dPdV" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate dP/dV for numerical calculation of bulk modulus
+according to test this differs from analytical result by 1.e-5</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>precision</strong> – precision for numerical calc (default = 1.e-5 * v0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dP/dV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.vinet_k">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">vinet_k</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>numerical=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.vinet_k" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus, wrapper for cal_k_vinet
+cannot handle uncertainties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bulk modulus at high pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.vinet_k_num">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">vinet_k_num</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>precision=1e-05</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.vinet_k_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate bulk modulus numerically from volume, not pressure
+according to test this differs from analytical result by 1.e-5</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>precision</strong> – precision for numerical calc (default = 1.e-5 * v0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dP/dV</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.vinet_p">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">vinet_p</code><span class="sig-paren">(</span><em>v</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.vinet_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate pressure from vinet equation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – unit-cell volume in A^3</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">pressure in GPa</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.vinet_v">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">vinet_v</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.vinet_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>find volume at given pressure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>min_strain</strong> – defining minimum v/v0 value to search volume for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">unit cell volume at high pressure in A^3</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">wrapper function vetorizing vinet_v_single</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.eqn_vinet.vinet_v_single">
+<code class="descclassname">pytheos.eqn_vinet.</code><code class="descname">vinet_v_single</code><span class="sig-paren">(</span><em>p</em>, <em>v0</em>, <em>k0</em>, <em>k0p</em>, <em>min_strain=0.01</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.eqn_vinet.vinet_v_single" title="Permalink to this definition">¶</a></dt>
+<dd><p>find volume at given pressure using brenth in scipy.optimize
+this is for single p value, not vectorized</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>p</strong> – pressure in GPa</li>
+<li><strong>v0</strong> – unit-cell volume in A^3 at 1 bar</li>
+<li><strong>k0</strong> – bulk modulus at reference conditions</li>
+<li><strong>k0p</strong> – pressure derivative of bulk modulus at reference conditions</li>
+<li><strong>min_strain</strong> – defining minimum v/v0 value to search volume for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">unit cell volume at high pressure in A^3</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.etc">
+<span id="pytheos-etc-module"></span><h2>pytheos.etc module<a class="headerlink" href="#module-pytheos.etc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytheos.etc.isuncertainties">
+<code class="descclassname">pytheos.etc.</code><code class="descname">isuncertainties</code><span class="sig-paren">(</span><em>arg_list</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.etc.isuncertainties" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if the input list contains any elements with uncertainties class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg_list</strong> – list of arguments</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True/False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.fit_anharmonic">
+<span id="pytheos-fit-anharmonic-module"></span><h2>pytheos.fit_anharmonic module<a class="headerlink" href="#module-pytheos.fit_anharmonic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pytheos.fit_anharmonic.ZharkovAnhModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_anharmonic.</code><code class="descname">ZharkovAnhModel</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘a0’, ‘m’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_anharmonic.ZharkovAnhModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Zharkov anharmonic fitting</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.fit_electronic">
+<span id="pytheos-fit-electronic-module"></span><h2>pytheos.fit_electronic module<a class="headerlink" href="#module-pytheos.fit_electronic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pytheos.fit_electronic.ZharkovElecModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_electronic.</code><code class="descname">ZharkovElecModel</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘e0’, ‘g’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_electronic.ZharkovElecModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Zharkov electronic contribution fitting</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.fit_static">
+<span id="pytheos-fit-static-module"></span><h2>pytheos.fit_static module<a class="headerlink" href="#module-pytheos.fit_static" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pytheos.fit_static.BM3Model">
+<em class="property">class </em><code class="descclassname">pytheos.fit_static.</code><code class="descname">BM3Model</code><span class="sig-paren">(</span><em>independent_vars=[‘v’], param_names=[‘v0’, ‘k0’, ‘k0p’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_static.BM3Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for BM3 fitting</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pytheos.fit_static.KuncModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_static.</code><code class="descname">KuncModel</code><span class="sig-paren">(</span><em>independent_vars=[‘v’], param_names=[‘v0’, ‘k0’, ‘k0p’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_static.KuncModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Kunc fitting</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pytheos.fit_static.VinetModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_static.</code><code class="descname">VinetModel</code><span class="sig-paren">(</span><em>independent_vars=[‘v’], param_names=[‘v0’, ‘k0’, ‘k0p’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_static.VinetModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Vinet fitting</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.fit_thermal">
+<span id="pytheos-fit-thermal-module"></span><h2>pytheos.fit_thermal module<a class="headerlink" href="#module-pytheos.fit_thermal" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pytheos.fit_thermal.ConstqModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_thermal.</code><code class="descname">ConstqModel</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘gamma0’, ‘q’, ‘theta0’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_thermal.ConstqModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Constant Q model fitting</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pytheos.fit_thermal.Dorogokupets2007Model">
+<em class="property">class </em><code class="descclassname">pytheos.fit_thermal.</code><code class="descname">Dorogokupets2007Model</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘gamma0’, ‘gamma_inf’, ‘beta’, ‘theta0’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_thermal.Dorogokupets2007Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Dorogokupets2007 model fitting</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pytheos.fit_thermal.Dorogokupets2015Model">
+<em class="property">class </em><code class="descclassname">pytheos.fit_thermal.</code><code class="descname">Dorogokupets2015Model</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘gamma0’, ‘gamma_inf’, ‘beta’, ‘theta01’, ‘m1’, ‘theta02’, ‘m2’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_thermal.Dorogokupets2015Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Dorogokupets2015 model fitting</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pytheos.fit_thermal.SpezialeModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_thermal.</code><code class="descname">SpezialeModel</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘gamma0’, ‘q0’, ‘q1’, ‘theta0’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_thermal.SpezialeModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Speziale model fitting</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pytheos.fit_thermal.TangeModel">
+<em class="property">class </em><code class="descclassname">pytheos.fit_thermal.</code><code class="descname">TangeModel</code><span class="sig-paren">(</span><em>n, z, independent_vars=[‘v’, ‘temp’], param_names=[‘v0’, ‘gamma0’, ‘a’, ‘b’, ‘theta0’], prefix=”, missing=None, name=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.fit_thermal.TangeModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">lmfit.model.Model</span></code></p>
+<p>lmfit Model class for Tange model fitting</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pytheos" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pytheos">
+<h3>PythEOS<a class="headerlink" href="#pytheos" title="Permalink to this headline">¶</a></h3>
+<p>PythEOS is an open source python toolbox for equation of state (EOS).
+It includes:
+- a range of different equations
+- EOS fitting tools
+- a range of pressure scales</p>
+<p>Some important motivations are:
+- reproducible error propagation for EOS
+- flexible EOS fitting with a wide range of combinations of static, thermal, electronic, and anharmonic effects
+- reliable conversion of pressure scale</p>
+<p><strong>Notations</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param n:</th><td class="field-body">number of elements in a chemical formula</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param z:</th><td class="field-body">number of formula unit in a unit cell</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param m:</th><td class="field-body">molar mass in gram</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param p:</th><td class="field-body">pressure in GPa</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param v:</th><td class="field-body">unit-cell volume in A^3</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param temp:</th><td class="field-body">temperature in K</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param rho:</th><td class="field-body">density in g/cm^3</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param k0:</th><td class="field-body">bulk modulus at reference conditions</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param k0p:</th><td class="field-body">pressure derivative of bulk modulus at reference conditions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param c0:</th><td class="field-body">velocity at 1 bar in km/s</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param s:</th><td class="field-body">slope of the velocity change</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param rho0:</th><td class="field-body">density at 1 bar in g/cm^3</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param v0:</th><td class="field-body">unit-cell volume in A^3 at 1 bar</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param e0:</th><td class="field-body">parameter in K-1 for the Zharkov equation</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param g:</th><td class="field-body">parameter for the Zharkov equation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param gamma0:</th><td class="field-body">Gruneisen parameter at 1 bar</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param q:</th><td class="field-body">logarithmic derivative of Gruneisen parameter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param theta0:</th><td class="field-body">Debye temperature in K</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param t_ref:</th><td class="field-body">reference temperature, 300 K</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param three_r:</th><td class="field-body">3 times gas constant.
+Jamieson modified this value to compensate for mismatches</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param c_v:</th><td class="field-body">heat capacity</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param min_strain:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">defining minimum v/v0 value to search volume for</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param params_hugoniot:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">hugoniot parameters.
+[rho0 in g/cm3, c0 in km/s, s] for linear case and
+[rho0 in g/cm3, a in km/s, b, c in s/km] for non-linear case.
+See Jamieson for detail.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param params_therm:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">thermal parameters for the constq equations
+[v0 in A3, gamma0, q, theta0 in K]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param c_v:</th><td class="field-body">heat capacity for hugoniot temperature calculation</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param nonlinear:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">nonlinear Us-Up fit particularly for Jamieson’s gold
+scale</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param reference:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">reference for the EOS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pytheos package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pytheos.conversion">pytheos.conversion module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_anharmonic">pytheos.eqn_anharmonic module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_bm3">pytheos.eqn_bm3 module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_debye">pytheos.eqn_debye module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_electronic">pytheos.eqn_electronic module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_hugoniot">pytheos.eqn_hugoniot module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_jamieson">pytheos.eqn_jamieson module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_kunc">pytheos.eqn_kunc module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_therm">pytheos.eqn_therm module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_therm_Dorogokupets2007">pytheos.eqn_therm_Dorogokupets2007 module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_therm_Dorogokupets2015">pytheos.eqn_therm_Dorogokupets2015 module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_therm_Speziale">pytheos.eqn_therm_Speziale module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_therm_Tange">pytheos.eqn_therm_Tange module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_therm_constq">pytheos.eqn_therm_constq module</a></li>
+<li><a class="reference internal" href="#module-pytheos.eqn_vinet">pytheos.eqn_vinet module</a></li>
+<li><a class="reference internal" href="#module-pytheos.etc">pytheos.etc module</a></li>
+<li><a class="reference internal" href="#module-pytheos.fit_anharmonic">pytheos.fit_anharmonic module</a></li>
+<li><a class="reference internal" href="#module-pytheos.fit_electronic">pytheos.fit_electronic module</a></li>
+<li><a class="reference internal" href="#module-pytheos.fit_static">pytheos.fit_static module</a></li>
+<li><a class="reference internal" href="#module-pytheos.fit_thermal">pytheos.fit_thermal module</a></li>
+<li><a class="reference internal" href="#module-pytheos">Module contents</a><ul>
+<li><a class="reference internal" href="#pytheos">PythEOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pytheos.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, S.-H. Dan Shim.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/pytheos.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

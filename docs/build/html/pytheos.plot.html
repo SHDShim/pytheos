@@ -1,0 +1,227 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pytheos.plot package &#8212; pytheos 0.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pytheos-plot-package">
+<h1>pytheos.plot package<a class="headerlink" href="#pytheos-plot-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pytheos.plot.static_fit">
+<span id="pytheos-plot-static-fit-module"></span><h2>pytheos.plot.static_fit module<a class="headerlink" href="#module-pytheos.plot.static_fit" title="Permalink to this headline">¶</a></h2>
+<p>Todo’s</p>
+<dl class="function">
+<dt id="pytheos.plot.static_fit.static_fit_result">
+<code class="descclassname">pytheos.plot.static_fit.</code><code class="descname">static_fit_result</code><span class="sig-paren">(</span><em>fit_result</em>, <em>v_residual=None</em>, <em>v_label=’Unit-cell volume $(\mathrm{\AA}^3)$’</em>, <em>figsize=(5</em>, <em>5)</em>, <em>height_ratios=(3</em>, <em>1)</em>, <em>ms_data=8</em>, <em>p_err=None</em>, <em>v_err=None</em>, <em>pdf_filen=None</em>, <em>title=’Fit result’</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.plot.static_fit.static_fit_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot static compressional curve fitting result</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fit_result</strong> – lmfit result object, see example jnb file for detail</li>
+<li><strong>v_residual</strong> – manual input of fit residual</li>
+<li><strong>v_label</strong> – label for volume axis</li>
+<li><strong>figsize</strong> – figure size</li>
+<li><strong>fitline</strong> – manual input of fit line, array of (v_fitline, p_fitline)
+with uncertainties</li>
+<li><strong>height_ratios</strong> – height ratio between the main and residue plots</li>
+<li><strong>ms_data</strong> – marker size for data points</li>
+<li><strong>p_err</strong> – pressure error bar</li>
+<li><strong>v_err</strong> – volume error bar</li>
+<li><strong>pdf_filen</strong> – name of pdf output file</li>
+<li><strong>title</strong> – title of the figure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.plot.thermal_fit">
+<span id="pytheos-plot-thermal-fit-module"></span><h2>pytheos.plot.thermal_fit module<a class="headerlink" href="#module-pytheos.plot.thermal_fit" title="Permalink to this headline">¶</a></h2>
+<p>Todo’s</p>
+<dl class="function">
+<dt id="pytheos.plot.thermal_fit.thermal_data">
+<code class="descclassname">pytheos.plot.thermal_fit.</code><code class="descname">thermal_data</code><span class="sig-paren">(</span><em>data</em>, <em>figsize=(12</em>, <em>4)</em>, <em>ms_data=50</em>, <em>v_label=’Unit-cell volume $(\mathrm{\AA}^3)$’</em>, <em>pdf_filen=None</em>, <em>title=’P-V-T data’</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.plot.thermal_fit.thermal_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot P-V-T data before fitting</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> – {‘p’: unumpy array, ‘v’: unumpy array, ‘temp’: unumpy array}</li>
+<li><strong>eoscurves</strong> – {‘v’: unumpy array, ‘300’: unumpy array
+at the temperature ….}</li>
+<li><strong>v_label</strong> – label for volume axis</li>
+<li><strong>figsize</strong> – figure size</li>
+<li><strong>ms_data</strong> – marker size for data points</li>
+<li><strong>pdf_filen</strong> – name of pdf output file</li>
+<li><strong>title</strong> – title of the figure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytheos.plot.thermal_fit.thermal_fit_result">
+<code class="descclassname">pytheos.plot.thermal_fit.</code><code class="descname">thermal_fit_result</code><span class="sig-paren">(</span><em>fit_result</em>, <em>v_residual=None</em>, <em>v_label=’Unit-cell volume $(\mathrm{\AA}^3)$’</em>, <em>temp_fitline=array([  300.</em>, <em>1000.</em>, <em>1500.</em>, <em>2000.</em>, <em>2500.</em>, <em>3000.])</em>, <em>figsize=(5</em>, <em>5)</em>, <em>height_ratios=(3</em>, <em>1)</em>, <em>ms_data=50</em>, <em>p_err=None</em>, <em>v_err=None</em>, <em>cbar_loc=(0.99</em>, <em>0.1</em>, <em>0.01</em>, <em>0.82)</em>, <em>pdf_filen=None</em>, <em>title=’Fit result’</em><span class="sig-paren">)</span><a class="headerlink" href="#pytheos.plot.thermal_fit.thermal_fit_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot P-V-T EOS curve fitting result</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fit_result</strong> – lmfit result object, see example jnb file for detail</li>
+<li><strong>v_label</strong> – label for volume axis</li>
+<li><strong>temp_fitline</strong> – temperatures to calculate isothermal compression
+curves, default = [300., 1000., 1500., 2000., 2500., 3000.]</li>
+<li><strong>figsize</strong> – figure size, default = (7,7)</li>
+<li><strong>height_ratios</strong> – height ratio between the main and residue plots,
+default = (3,1)</li>
+<li><strong>ms_data</strong> – marker size for data points</li>
+<li><strong>p_err</strong> – pressure error bar</li>
+<li><strong>v_err</strong> – volume error bar</li>
+<li><strong>cbar_loc</strong> – location of color bar</li>
+<li><strong>pdf_filen</strong> – name of pdf output file</li>
+<li><strong>title</strong> – title of the figure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytheos.plot">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pytheos.plot" title="Permalink to this headline">¶</a></h2>
+<p>from .BM3 import *
+from .conversion import *
+from .debye import *
+from .kunc import *
+from .objs import *
+from .objs_for_fit import *
+from .pth import *
+from .pth_ConstQ import *
+from .pth_Dorogokupets2007 import *
+from .pth_Dorogokupets2015 import *
+from .pth_Speziale2001 import *
+from .pth_Tange import *
+from .pvt import *
+from .vinet import *
+from .hugoniot import *</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pytheos.plot package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pytheos.plot.static_fit">pytheos.plot.static_fit module</a></li>
+<li><a class="reference internal" href="#module-pytheos.plot.thermal_fit">pytheos.plot.thermal_fit module</a></li>
+<li><a class="reference internal" href="#module-pytheos.plot">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pytheos.plot.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, S.-H. Dan Shim.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/pytheos.plot.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
