@@ -1,6 +1,9 @@
 PYTHEOS
 =======
 
+.. image:: https://zenodo.org/badge/93273486.svg
+   :target: https://zenodo.org/badge/latestdoi/93273486
+
 Overview
 --------
 
@@ -32,4 +35,4 @@ as well as traditional python scripts.
 How to cite
 -----------
 
-S.-H. Shim (2017) Pytheos - a python tool set for equations of state. DOI:
+S.-H. Shim (2017) Pytheos - a python tool set for equations of state. DOI: 10.5281/zenodo.802392
