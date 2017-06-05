@@ -25,17 +25,15 @@ Install
 
 Pytheos is a pure python package.
 
-It can be installed from source or:
+It can be installed from source or::
 
-```
-pip install pytheos
-```
+  pip install pytheos
 
-Anaconda users may try:
 
-```
-conda install -c shdshim pytheos
-```
+Anaconda users may try::
+
+  conda install -c shdshim pytheos
+
 
 Contact
 -------
