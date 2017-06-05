@@ -7,36 +7,50 @@ PYTHEOS
 Overview
 --------
 
-Pytheos provides a versatile tool set for calculating pressure from number of
-built-in pressure scales, converting pressure scales, and fitting pressure-volume
-and pressure-volume-temperature data sets.
+Pytheos provides a tool set for a wide range of tasks in high pressure
+science:
 
-It provides robust uncertainty propagations using the uncertainties package.
+- calculate pressure from a number of built-in pressure scales
 
-It provides flexible fitting using the lmfit package.  Pytheos allows for fitting
-using a wide range of equations and their combinations.
+- convert pressure scales
+
+- propagate uncertainties properly using the uncertainties package
+
+- fit pressure-volume and pressure-volume-temperature data sets using
+the scipy and lmfit packages
+
+- fit with a wide range of different equations and their combinations
 
 Install
 -------
 
-Pytheos is a pure python package, and can be installed from source or with
-``pip install pytheos``.
+Pytheos is a pure python package.
 
-Anaconda users may try: ``conda install -c shdshim pytheos``.
+It can be installed from source or:
+
+```
+pip install pytheos
+```
+
+Anaconda users may try:
+
+```
+conda install -c shdshim pytheos
+```
 
 Contact
 -------
 
-You may contact Dan Shim (shdshim@gmail.com) for bug reports, comments, and
-suggestions.  I am happy to include your new pressure scales or other pressure
-scales as well.
+Please contact Dan Shim (shdshim@gmail.com) for bug reports, comments, and
+suggestions.  I am happy to include new pressure scales or other pressure
+scales in pytheos as well.
 
 Examples and Tutorials
 ----------------------
 
 The pytheos package includes examples in Jupyter Notebook (under the examples
 folder), which demonstrate a range of operations, calculations, and fittings
-you can make with pytheos. Pytheos is designed to support data
+you can do with pytheos. Pytheos is designed to support data
 analysis using Jupyter Notebook as well as python scripts.
 
 Documentation is available at: https://shdshim.github.io/pytheos-docs/.
@@ -44,5 +58,5 @@ Documentation is available at: https://shdshim.github.io/pytheos-docs/.
 How to cite
 -----------
 
-S.-H. Shim (2017) Pytheos - a python tool set for equations of state.
-DOI: 10.5281/zenodo.802392
+S.-H. Shim (2017) Pytheos - a python tool set for equations of state. 
+Zenodo. http://doi.org/10.5281/zenodo.802392
