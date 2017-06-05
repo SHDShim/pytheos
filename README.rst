@@ -16,8 +16,7 @@ science:
 
 - propagate uncertainties properly using the uncertainties package
 
-- fit pressure-volume and pressure-volume-temperature data sets using
-the scipy and lmfit packages
+- fit pressure-volume and pressure-volume-temperature data sets using the scipy and lmfit packages
 
 - fit with a wide range of different equations and their combinations
 
@@ -58,5 +57,5 @@ Documentation is available at: https://shdshim.github.io/pytheos-docs/.
 How to cite
 -----------
 
-S.-H. Shim (2017) Pytheos - a python tool set for equations of state. 
+S.-H. Shim (2017) Pytheos - a python tool set for equations of state.
 Zenodo. http://doi.org/10.5281/zenodo.802392
