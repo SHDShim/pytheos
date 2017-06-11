@@ -27,8 +27,7 @@ science:
 
 - propagate uncertainties properly using the uncertainties package
 
-- fit pressure-volume and pressure-volume-temperature data sets using
-the scipy and lmfit packages
+- fit pressure-volume and pressure-volume-temperature data sets using the scipy and lmfit packages
 
 - fit with a wide range of different equations and their combinations
 
@@ -37,17 +36,15 @@ Install
 
 Pytheos is a pure python package.
 
-It can be installed from source or:
+It can be installed from source or::
 
-```
-pip install pytheos
-```
+  pip install pytheos
 
-Anaconda users may try:
 
-```
-conda install -c shdshim pytheos
-```
+Anaconda users may try::
+
+  conda install -c shdshim pytheos
+
 
 Contact
 -------
