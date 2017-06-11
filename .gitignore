@@ -2,6 +2,7 @@
 
 ### dropbox ###
 .dropbox
+*/.dropbox
 
 ### conda setup ###
 conda-build-recipe/
