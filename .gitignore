@@ -1,7 +1,7 @@
 # Created by https://www.gitignore.io/api/python
 
 ### dropbox ###
-.dropbox
+pytheos/.dropbox
 */.dropbox
 
 ### conda setup ###
