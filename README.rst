@@ -27,12 +27,17 @@ Pytheos is a pure python package.
 
 It can be installed from source or::
 
-  pip install pytheos
+  $ pip install pytheos
 
 
 Anaconda users may try::
 
-  conda install -c shdshim pytheos
+  $ conda install -c shdshim pytheos
+
+
+Or if you want to use my conda environment::
+
+  $ conda env create -f py35pytheos.yml
 
 
 Contact
