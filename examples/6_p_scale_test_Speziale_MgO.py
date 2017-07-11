@@ -71,25 +71,25 @@ v0 = 74.698
 speziale_mgo.three_r
 
 
-# In[12]:
+# In[16]:
 
 v = v0 * (eta) 
-temp = 3000.
+temp = 300.
 
 
-# In[13]:
+# In[17]:
 
 p = speziale_mgo.cal_p(v, temp * np.ones_like(v))
 
 
-# In[14]:
+# In[18]:
 
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
 
 
-# In[15]:
+# In[19]:
 
 v = speziale_mgo.cal_v(p, temp * np.ones_like(p), min_strain=0.6)
 print((v/v0))

@@ -12043,11 +12043,11 @@ Electronic:  None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">v0</span> <span class="o">*</span> <span class="p">(</span><span class="n">eta</span><span class="p">)</span> 
-<span class="n">temp</span> <span class="o">=</span> <span class="mf">3000.</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mf">300.</span>
 </pre></div>
 
 </div>
@@ -12057,7 +12057,7 @@ Electronic:  None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">speziale_mgo</span><span class="o">.</span><span class="n">cal_p</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
@@ -12070,7 +12070,7 @@ Electronic:  None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;for T = &#39;</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
@@ -12088,28 +12088,28 @@ Electronic:  None
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>for T =  3000.0
- 1.000  17.69+/-0.35
- 0.980  20.87+/-0.37
- 0.960  24.50+/-0.41
- 0.940  28.62+/-0.46
- 0.920  33.26+/-0.50
- 0.900  38.45+/-0.54
- 0.880  44.24+/-0.58
- 0.860  50.70+/-0.61
- 0.840  57.89+/-0.64
- 0.820  65.89+/-0.67
- 0.800  74.81+/-0.69
- 0.780  84.74+/-0.71
- 0.760  95.84+/-0.74
- 0.740  108.24+/-0.76
- 0.720  122.13+/-0.78
- 0.700  137.72+/-0.81
- 0.680  155.25+/-0.84
- 0.660  175.02+/-0.88
- 0.640  197.36+/-0.93
- 0.620  222.70+/-1.00
- 0.600  251.51+/-1.08
+<pre>for T =  300.0
+ 1.000  0.00+/-0.00
+ 0.980  3.37+/-0.00
+ 0.960  7.09+/-0.00
+ 0.940  11.22+/-0.00
+ 0.920  15.78+/-0.01
+ 0.900  20.83+/-0.01
+ 0.880  26.44+/-0.02
+ 0.860  32.66+/-0.03
+ 0.840  39.57+/-0.04
+ 0.820  47.27+/-0.05
+ 0.800  55.84+/-0.07
+ 0.780  65.41+/-0.09
+ 0.760  76.11+/-0.11
+ 0.740  88.09+/-0.15
+ 0.720  101.53+/-0.19
+ 0.700  116.65+/-0.24
+ 0.680  133.69+/-0.29
+ 0.660  152.94+/-0.37
+ 0.640  174.74+/-0.46
+ 0.620  199.50+/-0.56
+ 0.600  227.72+/-0.70
 </pre>
 </div>
 </div>
@@ -12120,7 +12120,7 @@ Electronic:  None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">speziale_mgo</span><span class="o">.</span><span class="n">cal_v</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">min_strain</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
