@@ -6,6 +6,7 @@ pytheos/.dropbox
 
 ### conda setup ###
 conda-build-recipe/
+conda-dist
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
