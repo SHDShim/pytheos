@@ -1,6 +1,23 @@
 CHANGES
 =======
 
+* change readme file to md format
+* clean up yml
+* new instructions and new conda env files
+* add instruction for conda environment
+* include conda environemt
+* update folder structure
+* update folder structure
+* try to remove dropbox info
+* update README
+* update README
+* update README
+* docs update
+* update docs
+* Set theme jekyll-theme-cayman
+* add missing docs files
+* Update REAME.rst
+* After depositing PyPI and Anaconda
 * update for new DOI
 * add DOI
 * add license
