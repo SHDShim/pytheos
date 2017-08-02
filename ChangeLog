@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* rst add
 * update setup.py for README.rst generation
 * version number change
 * add lean env files

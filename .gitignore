@@ -5,8 +5,6 @@ backups/*
 pytheos/.dropbox
 */.dropbox
 
-## Block this for pypi
-./README.md
 
 ### conda setup ###
 conda-build-recipe/
