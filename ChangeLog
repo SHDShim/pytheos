@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* version number change
 * add lean env files
 * change readme file to md format
 * clean up yml
