@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* setup.py change
 * rst add
 * update setup.py for README.rst generation
 * version number change
