@@ -55,7 +55,7 @@ For window users::
 
 ::
 
-    > conda env create -f py35ds-win64.yml
+    conda env create -f py35ds-win64.yml
 
 The command above will create a new environment: ``py35ds``.
 
