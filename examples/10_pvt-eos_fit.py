@@ -1,22 +1,25 @@
 
 # coding: utf-8
 
-# In[1]:
-
-get_ipython().magic('cat 0Source_Citation.txt')
-
-
 # In[2]:
 
-get_ipython().magic('matplotlib inline')
+
+get_ipython().run_line_magic('cat', '0Source_Citation.txt')
+
+
+# In[3]:
+
+
+get_ipython().run_line_magic('matplotlib', 'inline')
 # %matplotlib notebook # for interactive
 
 
 # For high dpi displays.
 
-# In[3]:
+# In[4]:
 
-get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 
 # # 0. General note
@@ -29,10 +32,12 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[4]:
+# In[5]:
+
 
 import numpy as np
 import uncertainties as uct
+import pandas as pd
 from uncertainties import unumpy as unp
 import matplotlib.pyplot as plt
 import pytheos as eos
@@ -42,19 +47,22 @@ import pytheos as eos
 
 # Equations of state of gold from Fei et al. (2007, PNAS) and Dorogokupets and Dewaele (2007, HPR).  These equations are provided from `pytheos` as built-in classes.
 
-# In[5]:
+# In[6]:
+
 
 au_eos = {'Fei2007': eos.gold.Fei2007bm3(), 'Dorogokupets2007': eos.gold.Dorogokupets2007()}
 
 
 # Because we use Birch-Murnaghan eos version of Fei2007 and Dorogokupets2007 used Vinet eos, we create a dictionary to provide different static compression eos for the different pressure scales used.
 
-# In[6]:
+# In[7]:
+
 
 st_model = {'Fei2007': eos.BM3Model, 'Dorogokupets2007': eos.VinetModel}
 
 
-# In[7]:
+# In[8]:
+
 
 k0_3c = {'Fei2007': 241.2, 'Dorogokupets2007': 243.0}
 k0p_3c = {'Fei2007': 2.84, 'Dorogokupets2007': 2.68}
@@ -64,7 +72,8 @@ k0p_6h = {'Fei2007': 2.79, 'Dorogokupets2007': 2.59}
 
 # Initial guess:
 
-# In[8]:
+# In[9]:
+
 
 gamma0 = 1.06
 q = 1.
@@ -73,7 +82,8 @@ theta0 = 1200.
 
 # Physical constants for different materials
 
-# In[9]:
+# In[10]:
+
 
 v0 = {'3C': 82.8042, '6H': 124.27}
 n_3c = 2.; z_3c = 4.
@@ -84,12 +94,26 @@ n_6h = 2.; z_6h = 6.
 
 # Data file is in `csv` format.
 
-# In[10]:
-
-data = np.recfromcsv('./data/3C-HiTEOS-final.csv', case_sensitive=True, deletechars='')
+# In[22]:
 
 
-# In[11]:
+data = pd.read_csv('./data/3C-HiTEOS-final.csv')
+
+
+# In[23]:
+
+
+data.head()
+
+
+# In[24]:
+
+
+data.columns
+
+
+# In[25]:
+
 
 v_std = unp.uarray( data['V(Au)'], data['sV(Au)'])
 temp = unp.uarray(data['T(3C)'], data['sT(3C)'])
@@ -98,7 +122,8 @@ v = unp.uarray(data['V(3C)'], data['sV(3C)'])
 
 # `pytheos` provides `plot.thermal_data` function to show the data distribution in the P-V and P-T spaces.
 
-# In[12]:
+# In[26]:
+
 
 for key, value in au_eos.items(): # iterations for different pressure scales
     p = au_eos[key].cal_p(v_std, temp)
@@ -111,7 +136,8 @@ for key, value in au_eos.items(): # iterations for different pressure scales
 # 
 # Normally weight for each data point can be calculated from $\sigma(P)$.  In this case, using `uncertainties`, we can easily propagate the temperature and volume uncertainties to get the value.
 
-# In[13]:
+# In[27]:
+
 
 for key, value in au_eos.items(): # iteration for different pressure scales
     # calculate pressure
@@ -145,13 +171,15 @@ for key, value in au_eos.items(): # iteration for different pressure scales
 
 # The cell below shows fitting using Altschuler equation for the thermal part of eos.
 
-# In[14]:
+# In[28]:
+
 
 gamma_inf = 0.4
 beta = 1.
 
 
-# In[15]:
+# In[29]:
+
 
 for key, value in au_eos.items():
     # calculate pressure
@@ -181,13 +209,15 @@ for key, value in au_eos.items():
 
 # Speziale et al. (2000) presented a different way to describe the behavior of the Gruniense parameter.
 
-# In[16]:
+# In[30]:
+
 
 q0 = 1.
 q1 = 1.
 
 
-# In[17]:
+# In[31]:
+
 
 for key, value in au_eos.items():
     # calculate pressure
@@ -211,9 +241,4 @@ for key, value in au_eos.items():
     print(fit_result.fit_report())
     # plot fitting results
     eos.plot.thermal_fit_result(fit_result, p_err=unp.std_devs(p), v_err=unp.std_devs(v), title=key)
-
-
-# In[ ]:
-
-
 

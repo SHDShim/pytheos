@@ -3,12 +3,14 @@
 
 # In[1]:
 
-get_ipython().magic('cat 0Source_Citation.txt')
+
+get_ipython().run_line_magic('cat', '0Source_Citation.txt')
 
 
 # In[2]:
 
-get_ipython().magic('matplotlib inline')
+
+get_ipython().run_line_magic('matplotlib', 'inline')
 # %matplotlib notebook # for interactive
 
 
@@ -16,7 +18,8 @@ get_ipython().magic('matplotlib inline')
 
 # In[3]:
 
-get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 
 # # 0. General note
@@ -29,6 +32,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # In[4]:
 
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pytheos as eos
@@ -40,12 +44,14 @@ import pytheos as eos
 
 # In[5]:
 
+
 v0 = 11.244; k0 = 160.; k0p = 4.0
 
 
 # Three different equations for static EOS of MgO.
 
 # In[6]:
+
 
 exp_bm3 = eos.BM3Model()
 exp_vinet = eos.VinetModel()
@@ -56,6 +62,7 @@ exp_kunc = eos.KuncModel(order=5) # this way I can handle order
 
 # In[7]:
 
+
 params = exp_bm3.make_params(v0=v0, k0=k0, k0p=k0p)
 
 
@@ -65,12 +72,14 @@ params = exp_bm3.make_params(v0=v0, k0=k0, k0p=k0p)
 
 # In[8]:
 
+
 v_data = v0 * np.linspace(0.99,0.6,20)
 
 
 # Calculate pressures from three different equations.
 
 # In[9]:
+
 
 p_bm3 = exp_bm3.eval(params, v=v_data)
 p_vinet = exp_vinet.eval(params, v=v_data)
@@ -81,6 +90,7 @@ p_kunc = exp_kunc.eval(params, v=v_data)
 
 # In[10]:
 
+
 sp = np.random.normal(0.,2.,20)
 p_data = p_bm3 + sp
 
@@ -88,6 +98,7 @@ p_data = p_bm3 + sp
 # Plot the synthetic data together with true values.
 
 # In[11]:
+
 
 plt.plot(p_data, v_data, 'ko', label='data')
 plt.plot(p_bm3, v_data, label='bm3')
@@ -100,6 +111,7 @@ plt.legend();
 # The cell below shows the systematic differences between the equations.
 
 # In[12]:
+
 
 plt.plot(p_bm3, p_vinet-p_bm3, label='Vinet - BM3')
 plt.plot(p_bm3, p_kunc-p_bm3, label='Kunc - BM3')
@@ -114,6 +126,7 @@ plt.legend();
 
 # In[13]:
 
+
 params['v0'].vary = False
 #params['k0'].vary = False
 
@@ -122,12 +135,14 @@ params['v0'].vary = False
 
 # In[14]:
 
+
 weight = None # 1./sp#None
 
 
 # The cell below performs fitting with BM3 equation.
 
 # In[15]:
+
 
 fitresult_bm3 = exp_bm3.fit(p_data, params, v=v_data, weights=weight)
 
@@ -136,6 +151,7 @@ fitresult_bm3 = exp_bm3.fit(p_data, params, v=v_data, weights=weight)
 
 # In[16]:
 
+
 print(fitresult_bm3.fit_report())
 
 
@@ -143,11 +159,13 @@ print(fitresult_bm3.fit_report())
 
 # In[17]:
 
+
 fitresult_vinet = exp_vinet.fit(p_data, params, v=v_data, weights=weight)
 print(fitresult_vinet.fit_report())
 
 
 # In[18]:
+
 
 fitresult_kunc = exp_kunc.fit(p_data, params, v=v_data, weights=weight)
 print(fitresult_kunc.fit_report())
@@ -159,6 +177,7 @@ print(fitresult_kunc.fit_report())
 
 # In[19]:
 
+
 fitresult_vinet.params['k0p'].value
 
 
@@ -166,12 +185,14 @@ fitresult_vinet.params['k0p'].value
 
 # In[20]:
 
+
 fitresult_vinet.params['k0p'].stderr
 
 
 # The cells below show how to calculate fitted pressure values at the data points.  First, we get the fit parameters.
 
 # In[21]:
+
 
 v0_r = fitresult_vinet.params['v0']
 k0_r = fitresult_vinet.params['k0']
@@ -182,6 +203,7 @@ k0p_r = fitresult_vinet.params['k0p']
 
 # In[22]:
 
+
 f = fitresult_vinet.model
 
 
@@ -189,10 +211,12 @@ f = fitresult_vinet.model
 
 # In[23]:
 
+
 f.eval(params, v=v_data)
 
 
 # In[24]:
+
 
 f.func(v_data, v0, k0, k0p)
 
@@ -201,15 +225,18 @@ f.func(v_data, v0, k0, k0p)
 
 # In[25]:
 
+
 v_fitline = np.linspace(v0,v_data.min(),100)
 
 
 # In[26]:
 
+
 p_fitline = f.func(v_fitline, v0_r, k0_r, k0p_r)
 
 
 # In[27]:
+
 
 plt.plot(p_fitline, v_fitline)
 plt.plot(p_data, v_data, 'k.', label='data')
@@ -220,12 +247,14 @@ plt.xlabel('Pressure (GPa)'); plt.ylabel('Molar volume (cm$^3$/mol)');
 
 # In[28]:
 
+
 fitresult_bm3.params
 
 
 # The cell below shows how to get the uncertainties of the fit curve.
 
 # In[29]:
+
 
 from uncertainties import ufloat
 p_err = f.func(v_fitline, ufloat(fitresult_bm3.params['v0'].value, 0.),
@@ -237,6 +266,7 @@ p_err = f.func(v_fitline, ufloat(fitresult_bm3.params['v0'].value, 0.),
 
 # In[30]:
 
+
 import pandas as pd
 df = pd.DataFrame()
 df['p'] = p_err
@@ -247,6 +277,7 @@ df.head()
 
 # In[31]:
 
+
 eos.plot.static_fit_result(fitresult_bm3, p_err=sp)
 
 
@@ -254,10 +285,12 @@ eos.plot.static_fit_result(fitresult_bm3, p_err=sp)
 
 # In[32]:
 
+
 eos.plot.static_fit_result(fitresult_vinet)
 
 
 # In[33]:
+
 
 eos.plot.static_fit_result(fitresult_kunc)
 

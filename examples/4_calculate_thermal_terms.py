@@ -3,12 +3,14 @@
 
 # In[1]:
 
-get_ipython().magic('cat 0Source_Citation.txt')
+
+get_ipython().run_line_magic('cat', '0Source_Citation.txt')
 
 
 # In[2]:
 
-get_ipython().magic('matplotlib inline')
+
+get_ipython().run_line_magic('matplotlib', 'inline')
 # %matplotlib notebook # for interactive
 
 
@@ -16,7 +18,8 @@ get_ipython().magic('matplotlib inline')
 
 # In[3]:
 
-get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 
 # # 0. General note
@@ -26,6 +29,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 # # 1. General setup
 
 # In[4]:
+
 
 import uncertainties as uct
 import numpy as np
@@ -40,15 +44,18 @@ import pytheos as eos
 
 # In[5]:
 
+
 help(eos.constq_grun)
 
 
 # In[6]:
 
+
 help(eos.speziale_grun)
 
 
 # In[7]:
+
 
 help(eos.altshuler_grun)
 
@@ -56,6 +63,7 @@ help(eos.altshuler_grun)
 # We will test for MgO.
 
 # In[8]:
+
 
 v0 = 74.698
 v = np.linspace(v0, v0*0.8, 10)
@@ -86,12 +94,14 @@ v = np.linspace(v0, v0*0.8, 10)
 
 # In[9]:
 
+
 gamma_de = eos.constq_grun(v, v0, 1.45, 0.8)
 gamma_sp = eos.speziale_grun(v, v0, uct.ufloat(1.49, 0.03), uct.ufloat(1.65, 0.4), uct.ufloat(11.8, 0.2))
 gamma_do = eos.altshuler_grun(v, v0, 1.50, 0.75, 2.96) 
 
 
 # In[10]:
+
 
 plt.plot(v, gamma_de, label='Dewaele2000')
 plt.errorbar(v, unp.nominal_values(gamma_sp), yerr=unp.std_devs(gamma_sp), label='Speziale2001')
@@ -105,20 +115,24 @@ plt.legend();
 
 # In[11]:
 
+
 help(eos.constq_debyetemp)
 
 
 # In[12]:
+
 
 help(eos.speziale_debyetemp)
 
 
 # In[13]:
 
+
 help(eos.altshuler_debyetemp)
 
 
 # In[14]:
+
 
 theta_de = eos.constq_debyetemp(v, v0, 1.45, 0.8, 800)
 theta_sp = eos.speziale_debyetemp(v, v0, uct.ufloat(1.49, 0.03), uct.ufloat(1.65, 0.4), uct.ufloat(11.8, 0.2), 773)
@@ -126,6 +140,7 @@ theta_do = eos.altshuler_debyetemp(v, v0, 1.50, 0.75, 2.96, 760)
 
 
 # In[15]:
+
 
 plt.plot(v, theta_de, label='Dewaele2000')
 plt.errorbar(v, unp.nominal_values(theta_sp), yerr=unp.std_devs(theta_sp), label='Speziale2001')
@@ -139,20 +154,24 @@ plt.legend();
 
 # In[16]:
 
+
 help(eos.constq_pth)
 
 
 # In[17]:
+
 
 help(eos.speziale_pth)
 
 
 # In[18]:
 
+
 help(eos.dorogokupets2007_pth)
 
 
 # In[19]:
+
 
 n = 2; z = 4
 temp = np.ones_like(v) * 2000.
@@ -160,12 +179,14 @@ temp = np.ones_like(v) * 2000.
 
 # In[20]:
 
+
 pth_de = eos.constq_pth(v, temp, v0, 1.45, 0.8, 800, n, z)
 pth_sp = eos.speziale_pth(v, temp, v0, uct.ufloat(1.49, 0.03), uct.ufloat(1.65, 0.4), uct.ufloat(11.8, 0.2), 773, n, z)
 pth_do = eos.dorogokupets2007_pth(v, temp, v0, 1.50, 0.75, 2.96, 760, n, z) 
 
 
 # In[21]:
+
 
 plt.plot(v, pth_de, label='Dewaele2000')
 plt.errorbar(v, unp.nominal_values(pth_sp), yerr=unp.std_devs(pth_sp), label='Speziale2001')

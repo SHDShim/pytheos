@@ -3,12 +3,14 @@
 
 # In[1]:
 
-get_ipython().magic('cat 0Source_Citation.txt')
+
+get_ipython().run_line_magic('cat', '0Source_Citation.txt')
 
 
 # In[2]:
 
-get_ipython().magic('matplotlib inline')
+
+get_ipython().run_line_magic('matplotlib', 'inline')
 # %matplotlib notebook # for interactive
 
 
@@ -16,7 +18,8 @@ get_ipython().magic('matplotlib inline')
 
 # In[3]:
 
-get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 
 # # 0. General note
@@ -31,8 +34,10 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # In[4]:
 
+
 import numpy as np
 from uncertainties import unumpy as unp
+import pandas as pd
 import pytheos as eos
 
 
@@ -41,6 +46,7 @@ import pytheos as eos
 # Setup dictionaries for pressure standard `(au_eos)` and equation to use `(fit_model)`.  This allows for eos fits with a wide range of different pressure scales.
 
 # In[5]:
+
 
 au_eos = {'Fei2007': eos.gold.Fei2007bm3(), 'Dorogokupets2007': eos.gold.Dorogokupets2007(),
           'Yokoo2009': eos.gold.Yokoo2009(), 'Ye2017': eos.gold.Ye2017()}
@@ -52,6 +58,7 @@ fit_model = {'Fei2007': eos.BM3Model(), 'Dorogokupets2007': eos.VinetModel(),
 
 # In[6]:
 
+
 au_org = eos.gold.Tsuchiya2003()
 
 
@@ -59,12 +66,14 @@ au_org = eos.gold.Tsuchiya2003()
 
 # In[7]:
 
+
 #help(eos.gold.Yokoo2009)
 
 
 # We set initial values for the EOS parameters.
 
 # In[8]:
+
 
 v0 = {'en100': 162.30, 'en91': 163.18, 'en85': 163.30}
 k0 = {'en100': 260., 'en91': 260., 'en85': 260.}
@@ -77,12 +86,14 @@ k0p = {'en100': 4.0, 'en91': 4.0, 'en85': 4.0}
 
 # In[9]:
 
-data = np.recfromcsv('./data/Lundin2007.csv', case_sensitive=True, deletechars='')
+
+data = pd.read_csv('./data/Lundin2007.csv')
 
 
 # Make error propagation possible.
 
 # In[10]:
+
 
 v = {'en100': unp.uarray(data['v(en100)'][~np.isnan(data['v(en100)'])],
                         data['sv(en100)'][~np.isnan(data['v(en100)'])]),
@@ -101,6 +112,7 @@ v_std= {}
 
 # In[11]:
 
+
 for key, value in v.items():
     model = eos.BM3Model()
     params = model.make_params(v0=v0[key], k0=k0[key], k0p=k0p[key])
@@ -118,6 +130,7 @@ for key, value in v.items():
 
 # In[12]:
 
+
 for key, value in p_org.items():
     p_tempo = unp.nominal_values(value)
     # filter out empty cells
@@ -133,6 +146,7 @@ for key, value in p_org.items():
 
 # In[13]:
 
+
 for comp, value in v.items(): # iteration for different compositions
     for key, value in au_eos.items(): # iteration for different gold scales
         # set pressure scale to use
@@ -147,9 +161,4 @@ for comp, value in v.items(): # iteration for different compositions
         print('***'+key+' '+comp)
         print(fitresult.fit_report())
         eos.plot.static_fit_result(fitresult, title=key)
-
-
-# In[ ]:
-
-
 

@@ -3,12 +3,14 @@
 
 # In[1]:
 
-get_ipython().magic('cat 0Source_Citation.txt')
+
+get_ipython().run_line_magic('cat', '0Source_Citation.txt')
 
 
 # In[2]:
 
-get_ipython().magic('matplotlib inline')
+
+get_ipython().run_line_magic('matplotlib', 'inline')
 # %matplotlib notebook # for interactive
 
 
@@ -16,7 +18,8 @@ get_ipython().magic('matplotlib inline')
 
 # In[3]:
 
-get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 
 # # 0. General note
@@ -31,6 +34,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 
 # In[4]:
 
+
 import numpy as np
 import matplotlib.pyplot as plt
 import uncertainties as uct
@@ -44,6 +48,7 @@ import pytheos as eos
 
 # In[5]:
 
+
 au_eos = {'Fei2007': eos.gold.Fei2007bm3(), 'Dorogokupets2007': eos.gold.Dorogokupets2007()}
 
 
@@ -51,12 +56,14 @@ au_eos = {'Fei2007': eos.gold.Fei2007bm3(), 'Dorogokupets2007': eos.gold.Dorogok
 
 # In[6]:
 
+
 st_model = {'Fei2007': eos.BM3Model, 'Dorogokupets2007': eos.VinetModel}
 
 
 # Assign initial values for the EOS parameters.
 
 # In[7]:
+
 
 k0_3c = {'Fei2007': 241.2, 'Dorogokupets2007': 243.0}
 k0p_3c = {'Fei2007': 2.84, 'Dorogokupets2007': 2.68}
@@ -68,6 +75,7 @@ k0p_6h = {'Fei2007': 2.79, 'Dorogokupets2007': 2.59}
 
 # In[8]:
 
+
 gamma0 = 1.06
 q = 1.
 theta0 = 1200.
@@ -76,6 +84,7 @@ theta0 = 1200.
 # We also setup for the physical constants of two different polymorphs of SiC.
 
 # In[9]:
+
 
 v0 = {'3C': 82.8042, '6H': 124.27}
 n_3c = 2.; z_3c = 4.
@@ -88,12 +97,14 @@ n_6h = 2.; z_6h = 6.
 
 # In[10]:
 
+
 data = np.recfromcsv('./data/3C-HiTEOS-final.csv', case_sensitive=True, deletechars='')
 
 
 # Set up variables for the data.
 
 # In[11]:
+
 
 v_std = unp.uarray( data['V(Au)'], data['sV(Au)'])
 temp = unp.uarray(data['T(3C)'], data['sT(3C)'])
@@ -103,6 +114,7 @@ v = unp.uarray(data['V(3C)'], data['sV(3C)'])
 # Plot $P$-$V$-$T$ data in the $P$-$V$ and $P$-$T$ spaces.
 
 # In[12]:
+
 
 for key, value in au_eos.items():
     p = au_eos[key].cal_p(v_std, temp)
@@ -114,6 +126,7 @@ for key, value in au_eos.items():
 # Normally weight for each data point can be calculated from $\sigma(P)$.  In this case, using `uncertainties`, we can easily propagate the temperature and volume uncertainties to get the value.
 
 # In[13]:
+
 
 for key, value in au_eos.items():
     # calculate pressure
@@ -147,6 +160,7 @@ for key, value in au_eos.items():
 
 # In[14]:
 
+
 for key, value in au_eos.items():
     # calculate pressure
     p = au_eos[key].cal_p(v_std, temp)
@@ -173,9 +187,4 @@ for key, value in au_eos.items():
     print(fit_result.fit_report())
     # plot fitting results
     eos.plot.thermal_fit_result(fit_result, p_err=unp.std_devs(p), v_err=unp.std_devs(v), title=key)
-
-
-# In[ ]:
-
-
 

@@ -3,12 +3,14 @@
 
 # In[1]:
 
-get_ipython().magic('cat 0Source_Citation.txt')
+
+get_ipython().run_line_magic('cat', '0Source_Citation.txt')
 
 
 # In[2]:
 
-get_ipython().magic('matplotlib inline')
+
+get_ipython().run_line_magic('matplotlib', 'inline')
 # %matplotlib notebook # for interactive
 
 
@@ -16,7 +18,8 @@ get_ipython().magic('matplotlib inline')
 
 # In[3]:
 
-get_ipython().magic("config InlineBackend.figure_format = 'retina'")
+
+get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 
 # # 0. General note
@@ -26,6 +29,7 @@ get_ipython().magic("config InlineBackend.figure_format = 'retina'")
 # # 1. Global setup
 
 # In[4]:
+
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -37,52 +41,62 @@ import pytheos as eos
 
 # In[5]:
 
+
 eta = np.linspace(0., 0.34, 18)
 print(eta)
 
 
 # In[6]:
 
+
 tsuchiya_au = eos.gold.Tsuchiya2003()
 
 
 # In[7]:
+
 
 help(tsuchiya_au)
 
 
 # In[8]:
 
+
 tsuchiya_au.print_equations()
 
 
 # In[9]:
+
 
 tsuchiya_au.print_equations()
 
 
 # In[10]:
 
+
 tsuchiya_au.print_parameters()
 
 
 # In[11]:
+
 
 v0 = 67.84742110765599
 
 
 # In[12]:
 
+
 tsuchiya_au.three_r
 
 
 # In[13]:
+
 
 v = v0 * (1.-eta) 
 temp = 2500.
 
 
 # In[14]:
+
 
 p = tsuchiya_au.cal_p(v, temp * np.ones_like(v))
 
@@ -91,12 +105,14 @@ p = tsuchiya_au.cal_p(v, temp * np.ones_like(v))
 
 # In[15]:
 
+
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
 
 
 # In[16]:
+
 
 v = tsuchiya_au.cal_v(p, temp * np.ones_like(p), min_strain=0.6)
 print(1.-(v/v0))
@@ -110,22 +126,20 @@ print(1.-(v/v0))
 
 # In[17]:
 
+
 tsuchiya_au = eos.gold.Tsuchiya2003(reproduce_table=True)
 
 
 # In[18]:
+
 
 p = tsuchiya_au.cal_p(v, temp * np.ones_like(v))
 
 
 # In[19]:
 
+
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
-
-
-# In[ ]:
-
-
 

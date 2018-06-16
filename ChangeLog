@@ -1,6 +1,9 @@
 CHANGES
 =======
 
+* README.rst from md
+* make readme from md to rst
+* make readme from md to rst
 * setup.py change
 * rst add
 * update setup.py for README.rst generation
