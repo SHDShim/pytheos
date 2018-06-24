@@ -1,5 +1,6 @@
 numpy
 matplotlib
 uncertainties
-scipy
+scipy >= 0.17.0
 lmfit
+periodictable
