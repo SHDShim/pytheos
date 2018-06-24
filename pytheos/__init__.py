@@ -83,6 +83,9 @@ from .fit_electronic import ZharkovElecModel
 from .fit_anharmonic import ZharkovAnhModel
 from .conversion import vol_uc2mol
 from . import plot
-from .scales import gold
-from .scales import platinum
-from .scales import periclase
+
+# Py2-compat quickfix (to remove in 1-2 years as Py3 becomes fully dominant)
+try:
+    from .scales import gold, platinum, periclase
+except (SyntaxError, ImportError):
+    pass
