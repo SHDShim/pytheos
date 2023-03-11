@@ -31,32 +31,6 @@ It can be installed from source or,
 
     $ pip install pytheos
 
-For ``anaconda`` users,
-
-::
-
-    $ conda install -c shdshim pytheos
-
-Instruction for mineral physicists
-----------------------------------
-
-I provide environment files for mineral physicists. The environment file
-includes useful packages for mineral physicists. So those who are
-interested only ``pytheos`` may not want to use the environment files.
-
-If you decide to use the environment, you may install the environment
-by:
-
-::
-
-    $ conda env create -f py35ds-osx.yml
-
-For window users, use: ``py35ds-win64.yml``.
-
-The command above will create a new environment: ``py35ds``.
-
-If you need more detailed one, please find my instruction in `my gist
-site <https://gist.github.com/SHDShim/4f5987e4e1693b10dfa025baa9ab6f9d>`__.
 
 Contact
 -------
