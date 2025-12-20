@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
@@ -112,4 +112,10 @@ for eta_i, p_i in zip(eta, p):
 
 v = yokoo_pt.cal_v(p, temp * np.ones_like(p), min_strain=0.6)
 print(1.-(v/v0))
+
+
+# In[ ]:
+
+
+
 

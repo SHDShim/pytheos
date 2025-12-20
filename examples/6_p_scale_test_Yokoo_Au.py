@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
@@ -128,4 +128,16 @@ yokoo_au = eos.gold.Yokoo2009(reproduce_table=True)
 
 
 p = yokoo_au.cal_p(v, temp * np.ones_like(v))
+
+
+# In[18]:
+
+
+p
+
+
+# In[ ]:
+
+
+
 

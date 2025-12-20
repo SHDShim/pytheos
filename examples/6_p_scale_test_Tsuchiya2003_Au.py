@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
@@ -142,4 +142,16 @@ p = tsuchiya_au.cal_p(v, temp * np.ones_like(v))
 print('for T = ', temp)
 for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 

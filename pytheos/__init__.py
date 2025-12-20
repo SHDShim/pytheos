@@ -57,6 +57,7 @@ Some important motivations are:
 :param reference: reference for the EOS
 
 """
+__version__ = "0.0.2"
 from .eqn_bm3 import bm3_p, bm3_v, bm3_k, bm3_g, \
     bm3_small_f, bm3_big_F, bm3_k_num  # , bm3_p_u, bm3_v_u, bm3_k_u
 from .eqn_vinet import vinet_p, vinet_v, vinet_k, \

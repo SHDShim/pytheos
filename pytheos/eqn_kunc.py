@@ -6,7 +6,7 @@ import numpy as np
 import uncertainties as uct
 from uncertainties import unumpy as unp
 from scipy.optimize import brenth
-from scipy.misc import derivative
+from scipy.differentiate import derivative
 from .etc import isuncertainties
 
 

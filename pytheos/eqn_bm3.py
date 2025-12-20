@@ -5,7 +5,7 @@ function to be problematic to the functions here.
 import numpy as np
 import uncertainties as uct
 from scipy.optimize import brenth
-from scipy.misc import derivative
+from scipy.differentiate import derivative
 from .etc import isuncertainties
 
 
