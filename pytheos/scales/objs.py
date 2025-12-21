@@ -207,11 +207,12 @@ class MGEOS(object):
                 return v0
 
             def f_diff(v, ttemp, pp):
-                return self.cal_p(v, ttemp) - pp
+                return self.cal_p(v, ttemp).item() - pp
             # print(f_diff(v0 * 0.3, temp, p))
             v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
                        args=(ttemp, pp))
             return v
+
         f_vu = np.vectorize(_cal_v_single)
         v = f_vu(pp, ttemp)
         self.force_norm = False

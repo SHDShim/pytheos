@@ -48,8 +48,8 @@ class Zha2000(MGEOS):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(160.2, 0.0)),
                                  ('k0p', uct.ufloat(4.03, 0.0))])
-        reference = 'Zha et al. 2000. PNAS 97, 13494+'
-        MGEOS.__init__(self, n, z, params_st=params_st,
+        reference = 'Zha et al. 2000. PNAS 97, 13494+, no thermal pressure'
+        MGEOS.__init__(self, n, z, params_st=params_st, params_th=None, 
                        eqn_st='bm3', reference=reference)
 
 
@@ -62,8 +62,8 @@ class Ye2017(MGEOS):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(160.3, 0.0)),
                                  ('k0p', uct.ufloat(4.109, 0.022))])
-        reference = 'Ye et al. 2017. JGR 10.1002/2016JB013811'
-        MGEOS.__init__(self, n, z, params_st=params_st,
+        reference = 'Ye et al. 2017. JGR 10.1002/2016JB013811, no thermal pressure'
+        MGEOS.__init__(self, n, z, params_st=params_st, params_th=None,
                        eqn_st='vinet', reference=reference)
 
 
