@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
@@ -100,9 +100,19 @@ for eta_i, p_i in zip(eta, p):
     print("{0: .3f} {1: .2f}".format(eta_i, p_i))
 
 
-# In[14]:
+# In[21]:
 
 
-v = jamieson_mgo.cal_v(p, temp * np.ones_like(p))
-print(1.-(v/v0))
+p = np.linspace(0, 10, 11)
+temp = 2000
+
+for pi in p:
+    v = jamieson_mgo.cal_v(pi, temp)
+    print(1- (v/v0), v, pi)
+
+
+# In[ ]:
+
+
+
 

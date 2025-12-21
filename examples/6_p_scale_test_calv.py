@@ -82,14 +82,14 @@ test_EOS.print_parameters()
 v0 = 74.698
 
 
-# In[12]:
+# In[16]:
 
 
-p = np.linspace(0, 7500, 11) 
+p = np.linspace(0, 10000, 11) 
 temp = 3000.
 
 
-# In[13]:
+# In[17]:
 
 
 v = test_EOS.cal_v(p, temp * np.ones_like(p), min_strain=0.1)
@@ -98,7 +98,7 @@ v_300 = test_EOS.cal_v(p, 300. * np.ones_like(p))
 
 # Table is not given in this publication.
 
-# In[ ]:
+# In[18]:
 
 
 print('for T = ', temp)
@@ -106,7 +106,7 @@ for eta_i, v_i in zip(p, v):
     print("{0: .3f} {1: .2f} {2: .2f}".format(eta_i, v_i, test_EOS.cal_p(v_i, 300.)))
 
 
-# In[ ]:
+# In[15]:
 
 
 import pytheos as eos
