@@ -142,8 +142,7 @@ class Jamieson1982(JHEOS):
                                     ('gamma0', uct.ufloat(2.40, 0.0)),
                                     ('q', uct.ufloat(1.0, 0.0)),
                                     ('theta0', uct.ufloat(200., 0.0))])
-        reference = 'Jamieson et al. 1982. High pressure research in \
-            geophysics.'
+        reference = 'Jamieson et al. 1982. High pressure research in geophysics.'
         JHEOS.__init__(self, n, z, mass_shock, params_hugoniot, params_therm,
                        three_r=three_r, reference=reference)
 

@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>6_p_scale_test_calv</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>0-p-calculator</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7599,7 +7599,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This example compares pressure calculated from <code>pytheos</code> and original publication for the MgO scale by Dorogokupets 2015.</p>
+<p>Quick pressure calculator using <code>pytheos</code>.</p>
 </div>
 </div>
 </div>
@@ -7619,13 +7619,36 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">uncertainties</span><span class="w"> </span><span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uncertainties</span><span class="w"> </span><span class="kn">import</span> <span class="n">ufloat</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytheos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eos</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">scales</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'MgO'</span><span class="p">:</span> <span class="p">[</span><span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Tange2009</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Dorogokupets2015</span><span class="p">(),</span>
+              <span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Dorogokupets2015</span><span class="p">()</span> <span class="p">,</span> <span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Jamieson1982</span><span class="p">()],</span>
+          <span class="s1">'Au'</span><span class="p">:</span> <span class="p">[</span><span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Dorogokupets2007</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Dorogokupets2015</span><span class="p">(),</span>
+                   <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Fei2007bm3</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Fei2007vinet</span><span class="p">(),</span> 
+                   <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Heinz1984</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Shim2002</span><span class="p">(),</span> 
+                   <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Jamieson1982H</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">gold</span><span class="o">.</span><span class="n">Jamieson1982L</span><span class="p">()],</span>
+          <span class="s1">'Pt'</span><span class="p">:</span> <span class="p">[</span><span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Dorogokupets2007</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Dorogokupets2015</span><span class="p">(),</span>
+                 <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Fei2007bm3</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Fei2007vinet</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Holmes1989</span><span class="p">(),</span>
+                 <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Jamieson1982</span><span class="p">(),</span> <span class="n">eos</span><span class="o">.</span><span class="n">platinum</span><span class="o">.</span><span class="n">Yokoo2009</span><span class="p">()]</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -7638,229 +7661,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="3.-Compare">3. Compare<a class="anchor-link" href="#3.-Compare">¶</a></h1>
+<h1 id="2.-Calculator">2. Calculator<a class="anchor-link" href="#2.-Calculator">¶</a></h1>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>[1.   0.95 0.9  0.85 0.8  0.75 0.7  0.65 0.6 ]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_EOS</span> <span class="o">=</span> <span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Zha2000</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/opt/homebrew/Caskroom/miniforge/base/envs/pytheos-dev/lib/python3.12/site-packages/uncertainties/core.py:1024: UserWarning: Using UFloat objects with std_dev==0 may give unexpected results.
-  warn("Using UFloat objects with std_dev==0 may give unexpected results.")
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">eos</span><span class="o">.</span><span class="n">periclase</span><span class="o">.</span><span class="n">Zha2000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Help on class Zha2000 in module pytheos.scales.periclase:
-
-class Zha2000(pytheos.scales.objs.MGEOS)
- |  Zha2000(v0=74.698)
- |
- |  Zha et al. 2000. PNAS 97, 13494+
- |
- |  Method resolution order:
- |      Zha2000
- |      pytheos.scales.objs.MGEOS
- |      builtins.object
- |
- |  Methods defined here:
- |
- |  __init__(self, v0=74.698)
- |      :param params_st: elastic parameters for static EOS in an OrderedDict
- |          [v0 in A^3, k0 in GPa, k0p]
- |      :param params_th: thermal parameters for thermal EOS in an OrderedDict.
- |          The component can differ depending on the equation used.
- |      :param params_anh: anharmonic parameters for anharmonic correction in
- |          an OrderedDict.  The component can differ depending on the
- |          equation used.
- |      :param params_el: electronic parameters for electronic correction in
- |          an OrderedDict. The component can differ depending on the
- |          equation used.
- |      :param eqn_st: equation type for the static EOS. 'bm3', 'vinet', or
- |          'kunc'
- |      :param eqn_th: equation type for the thermal EOS. 'constq', 'tange',
- |          'speziale', 'dorogokupets2007', 'dorogokupets2015', 'alphakt'
- |      :param eqn_anh: equation type for anharmonic correction. 'zharkov',
- |      :param eqn_el: equation type for electonic correction. 'zharkov',
- |          'tsuchiya'
- |      :param t_ref: reference temperature, 300 K
- |      :param three_r: 3 times gas constant.
- |          Jamieson modified this value to compensate for mismatches
- |      :param reference: reference for the EOS
- |
- |  ----------------------------------------------------------------------
- |  Methods inherited from pytheos.scales.objs.MGEOS:
- |
- |  cal_p(self, v, temp)
- |      calculate total pressure at given volume and temperature
- |
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: pressure in GPa
- |      :note: 2017/05/10 temp must be numpy array.  If not, such as list,
- |          create an error.
- |
- |  cal_panh(self, v, temp)
- |      calculate pressure from anharmonic contributions
- |
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: pressure in GPa
- |
- |  cal_pel(self, v, temp)
- |      calculate pressure from electronic contributions
- |
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: pressure in GPa
- |
- |  cal_pst(self, v)
- |      calculate static pressure at 300 K.
- |
- |      :param v: unit-cell volume in A^3
- |      :return: static pressure at t_ref (=300 K) in GPa
- |
- |  cal_pth(self, v, temp)
- |      calculate thermal pressure
- |
- |      :param v: unit-cell volume in A^3
- |      :param temp: temperature in K
- |      :return: thermal pressure in GPa
- |
- |  cal_v(self, p, temp, min_strain=0.2, max_strain=1.0)
- |      calculate unit-cell volume at given pressure and temperature
- |
- |      :param p: pressure in GPa
- |      :param temp: temperature in K
- |      :param min_strain: minimum strain searched for volume root
- |      :param max_strain: maximum strain searched for volume root
- |      :return: unit-cell volume in A^3
- |      :note: 2017/05/10 I found wrap function is not compatible with
- |          OrderedDict. So I convert unp array to np array.
- |      :note: Falls back to spline interpolation if root-finding fails.
- |
- |  print_equations(self)
- |      show equations used for the EOS
- |
- |  print_parameters(self)
- |      show thermoelastic parameters for the EOS
- |
- |  print_reference(self)
- |      show reference for the EOS
- |
- |  ----------------------------------------------------------------------
- |  Data descriptors inherited from pytheos.scales.objs.MGEOS:
- |
- |  __dict__
- |      dictionary for instance variables
- |
- |  __weakref__
- |      list of weak references to the object
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_EOS</span><span class="o">.</span><span class="n">print_equations</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>P_static:  bm3
-P_thermal:  None
-P_anharmonic:  None
-P_electronic:  None
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7868,25 +7673,41 @@ P_electronic:  None
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_EOS</span><span class="o">.</span><span class="n">print_equations</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># change for'Au', 'Pt', 'MgO'</span>
+<span class="n">my_standard</span> <span class="o">=</span> <span class="s1">'Pt'</span> 
+
+<span class="c1"># See below about how to make inputs</span>
+<span class="n">my_volume</span> <span class="o">=</span> <span class="mf">60.0</span> 
+<span class="n">my_temperature</span> <span class="o">=</span> <span class="mf">2000.</span> 
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>P_static:  bm3
-P_thermal:  None
-P_anharmonic:  None
-P_electronic:  None
-</pre>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>Examples for volume and temperature inputs</em></p>
+<p>For single data point with errors</p>
+<div class="highlight"><pre><span></span><span class="n">my_volume</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mf">60.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>  
+<span class="n">my_temperature</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> 
+</pre></div>
+<p>For array of data points without errors</p>
+<div class="highlight"><pre><span></span><span class="n">my_volume</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">70</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span> 
+<span class="n">my_temperature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">1700</span><span class="p">])</span> 
+</pre></div>
+<p>For arrays with error bars</p>
+<div class="highlight"><pre><span></span><span class="n">nominal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">my_volume</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">nominal</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="n">nominal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2100</span><span class="p">,</span> <span class="mi">1210</span><span class="p">,</span> <span class="mi">2100</span><span class="p">])</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">160</span><span class="p">])</span>
+<span class="n">my_temperature</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">nominal</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -7898,7 +7719,10 @@ P_electronic:  None
 <div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_EOS</span><span class="o">.</span><span class="n">print_parameters</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">scales</span><span class="p">[</span><span class="n">my_standard</span><span class="p">]:</span>
+    <span class="n">eos_i</span> <span class="o">=</span> <span class="n">scale</span>
+    <span class="n">eos_i</span><span class="o">.</span><span class="n">print_reference</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">eos_i</span><span class="o">.</span><span class="n">cal_p</span><span class="p">(</span><span class="n">my_volume</span><span class="p">,</span> <span class="n">my_temperature</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -7911,159 +7735,21 @@ P_electronic:  None
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Static:  OrderedDict({'v0': 74.698+/-0.001, 'k0': 160.2+/-0, 'k0p': 4.03+/-0})
-Thermal:  None
-Anharmonic:  None
-Electronic:  None
+<pre>Ref:  Dorogokupets and Dewaele. 2007. HPR 27, 431+
+14.258+/-0.005
+Ref:  Dorogokupets et al. 2015. RGG 56, 172+
+14.673+/-0.005
+Ref:  Fei et al. 2007 PNAS 104, 9182+
+14.44+/-0.15
+Ref:  Fei et al. 2007 PNAS 104, 9182+
+14.44+/-0.15
+Ref:  Holmes et al. 1989. JAP 66, 2962+
+13.510+/-0.005
+Ref:  Jamieson et al. 1982. High pressure research in geophysics.
+13.07969+/-0.00019
+Ref:  Yokoo et al. 2009. PRB 80, 104114
+14.72+/-0.05
 </pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">v0</span> <span class="o">=</span> <span class="mf">74.698</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> 
-<span class="n">temp</span> <span class="o">=</span> <span class="mf">3000.</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">test_EOS</span><span class="o">.</span><span class="n">cal_v</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">min_strain</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">v_300</span> <span class="o">=</span> <span class="n">test_EOS</span><span class="o">.</span><span class="n">cal_v</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mf">300.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Table is not given in this publication.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'for T = '</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">eta_i</span><span class="p">,</span> <span class="n">v_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0: .3f}</span><span class="s2"> </span><span class="si">{1: .2f}</span><span class="s2"> </span><span class="si">{2: .2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_i</span><span class="p">,</span> <span class="n">v_i</span><span class="p">,</span> <span class="n">test_EOS</span><span class="o">.</span><span class="n">cal_p</span><span class="p">(</span><span class="n">v_i</span><span class="p">,</span> <span class="mf">300.</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>for T =  3000.0
- 0.000  74.70  0.00+/-0.00
- 1000.000  29.39  1000.00+/-0.04
- 2000.000  23.37  2000.00+/-0.08
- 3000.000  20.32  3000.00+/-0.11
- 4000.000  18.35  4000.00+/-0.15
- 5000.000  16.93  5000.00+/-0.19
- 6000.000  15.85  6000.00+/-0.22
- 7000.000  14.98  7000.00+/-0.26
- 8000.000  14.26  8000.00+/-0.29
- 9000.000  13.65  9000.00+/-0.32
- 10000.000  13.13  10000.00+/-0.36
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytheos</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">eos</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">v0</span> <span class="o">=</span> <span class="mf">74.698</span>
-<span class="n">k0</span> <span class="o">=</span> <span class="mf">160.2</span>
-<span class="n">k0p</span> <span class="o">=</span> <span class="mf">4.03</span>
-
-<span class="c1">#74.698+/-0.001, 'k0': 160.2+/-0, 'k0p': 4.03+/-0</span>
-
-<span class="n">v_spline</span> <span class="o">=</span> <span class="n">eos</span><span class="o">.</span><span class="n">bm3_v_single_spline</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">k0</span><span class="p">,</span> <span class="n">k0p</span><span class="p">)</span>
-<span class="n">v_inversion</span> <span class="o">=</span> <span class="n">eos</span><span class="o">.</span><span class="n">bm3_v_single</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">k0</span><span class="p">,</span> <span class="n">k0p</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">v_spline</span><span class="p">,</span> <span class="n">v_inversion</span><span class="p">,</span> <span class="p">(</span><span class="n">v_spline</span> <span class="o">-</span> <span class="n">v_inversion</span><span class="p">)</span><span class="o">/</span><span class="n">v_inversion</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>5.421102215402436 5.421102812271645 -1.1010106796302387e-07
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 </div>
 </div>
 </div>

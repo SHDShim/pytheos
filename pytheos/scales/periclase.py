@@ -100,7 +100,7 @@ class Tange2009(MGEOS):
                                  ('a', uct.ufloat(0.138, 0.019)),
                                  ('b', uct.ufloat(5.4, 1.1)),
                                  ('theta0', uct.ufloat(761., 13.0))])
-        reference = 'Tange, 2009, ?'
+        reference = 'Tange, 2009, JGR 114, B03208+'
         MGEOS.__init__(self, n, z, params_st=params_st, params_th=params_th,
                        eqn_st='vinet', eqn_th='tange', reference=reference)
 

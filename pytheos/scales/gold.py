@@ -35,8 +35,7 @@ class Jamieson1982L(JHEOS):
                                     ('gamma0', uct.ufloat(3.215, 0.0)),
                                     ('q', uct.ufloat(1.0, 0.0)),
                                     ('theta0', uct.ufloat(170., 0.0))])
-        reference = 'Jamieson et al. 1982. High pressure research in \
-                    geophysics. Fit C in table 2.'
+        reference = 'Jamieson et al. 1982. High pressure research in geophysics. Fit C in table 2.'
         JHEOS.__init__(self, n, z, mass_shock, params_hugoniot, params_therm,
                        three_r=three_r, reference=reference, nonlinear=True)
 
@@ -60,8 +59,7 @@ class Jamieson1982H(JHEOS):
                                     ('gamma0', uct.ufloat(3.215, 0.0)),
                                     ('q', uct.ufloat(1.0, 0.0)),
                                     ('theta0', uct.ufloat(170., 0.0))])
-        reference = 'Jamieson et al. 1982. High pressure research in \
-                    geophysics. Fit A in table 2.'
+        reference = 'Jamieson et al. 1982. High pressure research in geophysics. Fit A in table 2.'
         JHEOS.__init__(self, n, z, mass_shock, params_hugoniot, params_therm,
                        three_r=three_r, reference=reference)
 
