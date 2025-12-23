@@ -28,7 +28,7 @@ get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 
 # # 1. Global setup
 
-# In[7]:
+# In[4]:
 
 
 import matplotlib.pyplot as plt
@@ -38,7 +38,7 @@ from uncertainties import ufloat
 import pytheos as eos
 
 
-# In[8]:
+# In[5]:
 
 
 scales = {'MgO': [eos.periclase.Tange2009(), eos.periclase.Dorogokupets2015(),
@@ -54,7 +54,7 @@ scales = {'MgO': [eos.periclase.Tange2009(), eos.periclase.Dorogokupets2015(),
 
 # # 2. Calculator
 
-# In[9]:
+# In[6]:
 
 
 # change for'Au', 'Pt', 'MgO'
@@ -89,11 +89,23 @@ my_temperature = 2000.
 # my_temperature = unp.uarray(nominal, error)
 # ```
 
-# In[10]:
+# In[7]:
 
 
 for scale in scales[my_standard]:
     eos_i = scale
     eos_i.print_reference()
     print(eos_i.cal_p(my_volume, my_temperature))
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 

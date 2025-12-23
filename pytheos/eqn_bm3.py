@@ -53,10 +53,10 @@ def bm3_v(p, v0, k0, k0p, p_ref=0.0, min_strain=0.01):
     :return: volume at high pressure
     """
     if isuncertainties([p, v0, k0, k0p]):
-        f_u = np.vectorize(uct.wrap(bm3_v_single_spline), excluded=[1, 2, 3, 4, 5])
+        f_u = np.vectorize(uct.wrap(bm3_v_single), excluded=[1, 2, 3, 4, 5])
         return f_u(p, v0, k0, k0p, p_ref=p_ref, min_strain=min_strain)
     else:
-        f_v = np.vectorize(bm3_v_single_spline, excluded=[1, 2, 3, 4, 5])
+        f_v = np.vectorize(bm3_v_single, excluded=[1, 2, 3, 4, 5])
         return f_v(p, v0, k0, k0p, p_ref=p_ref, min_strain=min_strain)
 
 
@@ -251,63 +251,3 @@ def bm3_v_single(p, v0, k0, k0p, p_ref=0.0, min_strain=0.01):
     v = brenth(f_diff, v0, v0 * min_strain, args=(v0, k0, k0p, p, p_ref))
     return v
 
-from functools import lru_cache
-from scipy.interpolate import CubicSpline
-import numpy as np
-
-@lru_cache(maxsize=128)
-def _get_bm3_spline(v0, k0, k0p, p_ref, min_strain, n_points):
-    """
-    Create and cache BM3 spline for V(P).
-    LRU cache reuses splines for same parameters.
-    """
-    v_min = v0 * min_strain
-    v_array = np.logspace(np.log10(v_min), np.log10(v0), n_points)
-    p_array = np.array([bm3_p(v, v0, k0, k0p, p_ref=p_ref) for v in v_array])
-    
-    sort_idx = np.argsort(p_array)
-    return CubicSpline(p_array[sort_idx], v_array[sort_idx], extrapolate=False)
-
-
-def bm3_v_single_spline(p, v0, k0, k0p, p_ref=0.0, min_strain=0.01):
-    """
-    find volume at given pressure using cached spline interpolation
-    
-    :param p: pressure
-    :param v0: volume at reference conditions
-    :param k0: bulk modulus at reference conditions
-    :param k0p: pressure derivative of bulk modulus
-    :param p_ref: reference pressure (default = 0)
-    :param min_strain: minimum strain value (default = 0.01)
-    :return: volume at high pressure, or None if out of range
-    """
-    if p <= 1.e-5:
-        return v0
-    
-    try:
-        # Get cached spline
-        spline = _get_bm3_spline(v0, k0, k0p, p_ref, min_strain, n_points=200)
-        v = float(spline(p))
-        
-        if np.isnan(v):
-            # Out of range - try adaptive
-            current_strain = min_strain
-            for _ in range(30):
-                current_strain *= 0.5
-                if current_strain < 1e-10:
-                    return None
-                
-                v_min = v0 * current_strain
-                p_at_min = bm3_p(v_min, v0, k0, k0p, p_ref=p_ref)
-                
-                if p <= p_at_min:
-                    spline = _get_bm3_spline(v0, k0, k0p, p_ref, current_strain, 200)
-                    v = float(spline(p))
-                    if not np.isnan(v):
-                        return v
-            return None
-        
-        return v
-    
-    except Exception:
-        return None
