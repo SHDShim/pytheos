@@ -87,3 +87,6 @@ from . import plot
 from .scales import gold
 from .scales import platinum
 from .scales import periclase
+from .scales import sodium_chloride
+from .scales import sodium_chloride_b2
+from .scales import neon

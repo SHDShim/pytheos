@@ -98,10 +98,37 @@ for scale in scales[my_standard]:
     print(eos_i.cal_p(my_volume, my_temperature))
 
 
-# In[ ]:
+# In[8]:
 
 
+nacl_b2_d = eos.sodium_chloride_b2.Dorogokupets2007()
+nacl_b2_fv = eos.sodium_chloride_b2.Fei2007vinet()
+nacl_b2_fb = eos.sodium_chloride_b2.Fei2007bm3()
 
+
+# In[9]:
+
+
+v = 12/24.53*41.35
+print(v)
+temp = 300.
+nacl_b2_d.cal_p(v, temp), nacl_b2_fv.cal_p(v, temp), nacl_b2_fb.cal_p(v, temp)
+
+
+# In[10]:
+
+
+neon_fv = eos.neon.Fei2007vinet()
+neon_fb = eos.neon.Fei2007bm3()
+
+
+# In[14]:
+
+
+v = 28
+print(v)
+temp = 300.
+neon_fv.cal_p(v, temp), neon_fb.cal_p(v, temp)
 
 
 # In[ ]:
