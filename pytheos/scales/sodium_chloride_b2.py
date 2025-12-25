@@ -5,14 +5,15 @@ import scipy.constants as constants
 from ..conversion import vol_uc2mol, vol_mol2uc
 from .objs import MGEOS
 
-v_ref = 41.35  # 24.53 in cm3/mol
+v_ref_dorogokupets = 40.73302331777446  # 24.53 in cm3/mol
+v_ref_fei = 41.35
 n = 2.
 z = 1.
 ef_v = 0.001
 ef_temp = 0.05
-mass = ptable.formula("NaCl").mass * 1.e-3  # to kg
-v0_mol = vol_uc2mol(v_ref, z) # 24.53
-rho0 = mass / v0_mol  # kg/m^3
+#mass = ptable.formula("NaCl").mass * 1.e-3  # to kg
+#v0_mol = vol_uc2mol(v_ref, z) # 24.53
+#rho0 = mass / v0_mol  # kg/m^3
 
 class Dorogokupets2007(MGEOS):
     """
@@ -21,7 +22,7 @@ class Dorogokupets2007(MGEOS):
     However, table for Fei2007 in this paper does not seem to be correct even for 300 K isotherm.
     """
 
-    def __init__(self, v0=v_ref):
+    def __init__(self, v0=v_ref_dorogokupets):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(29.72, 0.0)),
                                  ('k0p', uct.ufloat(5.14, 0.0))])
@@ -49,7 +50,7 @@ class Fei2007vinet(MGEOS):
     I can reproduce their figure.
     """
 
-    def __init__(self, v0=v_ref):
+    def __init__(self, v0=v_ref_fei):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(26.86, 2.9)),
                                  ('k0p', uct.ufloat(5.25, 0.26))])
@@ -68,7 +69,7 @@ class Fei2007bm3(MGEOS):
     I can reproduce their figure.
     """
 
-    def __init__(self, v0=v_ref):
+    def __init__(self, v0=v_ref_fei):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(30.69, 2.9)),
                                  ('k0p', uct.ufloat(4.33, 0.26))])
