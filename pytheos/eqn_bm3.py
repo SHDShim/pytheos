@@ -5,8 +5,10 @@ function to be problematic to the functions here.
 import numpy as np
 import uncertainties as uct
 from scipy.optimize import brenth
-from scipy.misc import derivative
+from scipy.differentiate import derivative
 from .etc import isuncertainties
+from scipy.optimize import brentq, curve_fit
+from scipy.interpolate import PchipInterpolator
 
 
 def bm3_p(v, v0, k0, k0p, p_ref=0.0):
@@ -37,30 +39,6 @@ def cal_p_bm3(v, k, p_ref=0.0):
          9. / 8. * k[1] * (k[2] - 4. + 35. / 9. * p_ref / k[1]) *
          (1. - vvr**(-2. / 3.))**2.) * vvr**(-5. / 3.)
     return p
-
-
-def bm3_v_single(p, v0, k0, k0p, p_ref=0.0, min_strain=0.01):
-    """
-    find volume at given pressure using brenth in scipy.optimize
-    this is for single p value, not vectorized
-    this cannot handle uncertainties
-
-    :param p: pressure
-    :param v0: volume at reference conditions
-    :param k0: bulk modulus at reference conditions
-    :param k0p: pressure derivative of bulk modulus at different conditions
-    :param p_ref: reference pressure (default = 0)
-    :param min_strain: minimum strain value to find solution (default = 0.01)
-    :return: volume at high pressure
-    """
-    if p <= 1.e-5:
-        return v0
-
-    def f_diff(v, v0, k0, k0p, p, p_ref=0.0):
-        return bm3_p(v, v0, k0, k0p, p_ref=p_ref) - p
-    v = brenth(f_diff, v0, v0 * min_strain, args=(v0, k0, k0p, p, p_ref))
-    return v
-
 
 def bm3_v(p, v0, k0, k0p, p_ref=0.0, min_strain=0.01):
     """
@@ -249,3 +227,27 @@ def cal_big_F(p, f):
     :return: big F
     """
     return p / (3. * f * np.power((1. + 2. * f), 2.5))
+
+def bm3_v_single(p, v0, k0, k0p, p_ref=0.0, min_strain=0.01):
+    """
+    find volume at given pressure using brenth in scipy.optimize
+    this is for single p value, not vectorized
+    this cannot handle uncertainties
+
+    :param p: pressure
+    :param v0: volume at reference conditions
+    :param k0: bulk modulus at reference conditions
+    :param k0p: pressure derivative of bulk modulus at different conditions
+    :param p_ref: reference pressure (default = 0)
+    :param min_strain: minimum strain value to find solution (default = 0.01)
+    :return: volume at high pressure
+    """
+    if p <= 1.e-5:
+        return v0
+
+    def f_diff(v, v0, k0, k0p, p, p_ref=0.0):
+        return bm3_p(v, v0, k0, k0p, p_ref=p_ref) - p
+    
+    v = brenth(f_diff, v0, v0 * min_strain, args=(v0, k0, k0p, p, p_ref))
+    return v
+

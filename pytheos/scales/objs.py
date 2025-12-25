@@ -19,6 +19,8 @@ from ..eqn_therm_Dorogokupets2015 import dorogokupets2015_pth
 from ..eqn_anharmonic import zharkov_panh
 from ..eqn_electronic import zharkov_pel, tsuchiya_pel
 from ..conversion import vol_uc2mol, vol_mol2uc
+from scipy.interpolate import CubicSpline
+
 
 func_st = {'bm3': bm3_p, 'vinet': vinet_p, 'kunc': kunc_p}
 func_th = {'constq': constq_pth, 'tange': tange_pth,
@@ -185,6 +187,39 @@ class MGEOS(object):
         return self.cal_pst(v) + self.cal_pth(v, temp) + \
             self.cal_pel(v, temp) + self.cal_panh(v, temp)
 
+    # def cal_v(self, p, temp, min_strain=0.2, max_strain=1.0):
+    #     """
+    #     calculate unit-cell volume at given pressure and temperature
+
+    #     :param p: pressure in GPa
+    #     :param temp: temperature in K
+    #     :param min_strain: minimum strain searched for volume root
+    #     :param max_strain: maximum strain searched for volume root
+    #     :return: unit-cell volume in A^3
+    #     :note: 2017/05/10 I found wrap function is not compatible with
+    #         OrderedDict. So I convert unp array to np array.
+    #     """
+    #     v0 = self.params_st['v0'].nominal_value
+    #     self.force_norm = True
+    #     pp = unp.nominal_values(p)
+    #     ttemp = unp.nominal_values(temp)
+
+    #     def _cal_v_single(pp, ttemp):
+    #         if (pp <= 1.e-5) and (ttemp == 300.):
+    #             return v0
+
+    #         def f_diff(v, ttemp, pp):
+    #             return self.cal_p(v, ttemp).item() - pp
+    #         # print(f_diff(v0 * 0.3, temp, p))
+    #         v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
+    #                    args=(ttemp, pp))
+    #         return v
+
+    #     f_vu = np.vectorize(_cal_v_single)
+    #     v = f_vu(pp, ttemp)
+    #     self.force_norm = False
+    #     return v
+
     def cal_v(self, p, temp, min_strain=0.2, max_strain=1.0):
         """
         calculate unit-cell volume at given pressure and temperature
@@ -196,6 +231,7 @@ class MGEOS(object):
         :return: unit-cell volume in A^3
         :note: 2017/05/10 I found wrap function is not compatible with
             OrderedDict. So I convert unp array to np array.
+        :note: Falls back to spline interpolation if root-finding fails.
         """
         v0 = self.params_st['v0'].nominal_value
         self.force_norm = True
@@ -203,16 +239,95 @@ class MGEOS(object):
         ttemp = unp.nominal_values(temp)
 
         def _cal_v_single(pp, ttemp):
+            """Original root-finding approach using brenth."""
             if (pp <= 1.e-5) and (ttemp == 300.):
                 return v0
 
             def f_diff(v, ttemp, pp):
-                return self.cal_p(v, ttemp) - pp
-            # print(f_diff(v0 * 0.3, temp, p))
-            v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
-                       args=(ttemp, pp))
+                return self.cal_p(v, ttemp).item() - pp
+            
+            try:
+                v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
+                        args=(ttemp, pp))
+                return v
+            except (ValueError, RuntimeError):
+                return None
+
+        def _cal_v_single_spline(pp, ttemp, n_points=200):
+            """Spline interpolation approach for when root-finding fails."""
+            if (pp <= 1.e-5) and (ttemp == 300.):
+                return v0
+            
+            try:
+                # Adaptive compression range check
+                current_max_strain = max_strain
+                v_min_test = v0 * current_max_strain
+                p_at_min = self.cal_p(v_min_test, ttemp)
+                
+                # Convert to scalar if needed
+                if hasattr(p_at_min, 'item'):
+                    p_at_min = p_at_min.item()
+                
+                # Check if we need more compression
+                if pp > p_at_min:
+                    for _ in range(30):
+                        current_max_strain *= 0.5
+                        if current_max_strain < 1e-10:
+                            return None
+                        
+                        v_min_test = v0 * current_max_strain
+                        p_at_min = self.cal_p(v_min_test, ttemp)
+                        if hasattr(p_at_min, 'item'):
+                            p_at_min = p_at_min.item()
+                        
+                        if pp <= p_at_min:
+                            break
+                    else:
+                        return None
+                
+                # Create volume array (log spacing for better resolution)
+                v_min = v0 * current_max_strain
+                v_max = v0 * min_strain
+                v_array = np.logspace(np.log10(v_min), np.log10(v_max), n_points)
+                
+                # Calculate pressures
+                p_array = np.array([
+                    self.cal_p(v, ttemp).item() if hasattr(self.cal_p(v, ttemp), 'item') 
+                    else float(self.cal_p(v, ttemp))
+                    for v in v_array
+                ])
+                
+                # Sort by pressure (ensure monotonic)
+                sort_idx = np.argsort(p_array)
+                p_array = p_array[sort_idx]
+                v_array = v_array[sort_idx]
+                
+                # Create spline P -> V
+                spline = CubicSpline(p_array, v_array, extrapolate=False)
+                
+                # Evaluate at target pressure
+                v = float(spline(pp))
+                
+                if np.isnan(v):
+                    return None
+                
+                return v
+            
+            except Exception:
+                return None
+
+        def _cal_v_wrapper(pp, ttemp):
+            """Wrapper that tries root-finding first, then falls back to spline."""
+            # Try root-finding first
+            v = _cal_v_single(pp, ttemp)
+            
+            # If failed, try spline approach
+            if v is None:
+                v = _cal_v_single_spline(pp, ttemp)
+            
             return v
-        f_vu = np.vectorize(_cal_v_single)
+
+        f_vu = np.vectorize(_cal_v_wrapper)
         v = f_vu(pp, ttemp)
         self.force_norm = False
         return v
@@ -405,8 +520,40 @@ class JHEOS(object):
         :return: pressure in GPa
         """
         return self.cal_pst(v) + self.cal_pth(v, temp)
+    
+    # def cal_v(self, p, temp, min_strain=0.3, max_strain=1.0):
+    #     """
+    #     calculate unit-cell volume at given pressure and temperature
 
-    def cal_v(self, p, temp, min_strain=0.3, max_strain=1.0):
+    #     :param p: pressure in GPa
+    #     :param temp: temperature in K
+    #     :param min_strain: minimum strain searched for volume root
+    #     :param max_strain: maximum strain searched for volume root
+    #     :return: unit-cell volume in A^3
+    #     :note: 2017/05/10 I found wrap function is not compatible with
+    #         OrderedDict. So I convert unp array to np array.
+    #     """
+    #     v0 = self.params_therm['v0'].nominal_value
+    #     self.force_norm = True
+    #     pp = unp.nominal_values(p)
+    #     ttemp = unp.nominal_values(temp)
+
+    #     def _cal_v_single(pp, ttemp):
+    #         if (pp <= 1.e-5) and (ttemp == 300.):
+    #             return v0
+
+    #         def f_diff(v, ttemp, pp):
+    #             return self.cal_p(v, ttemp) - pp
+    #         # print(f_diff(v0 * 0.3, temp, p))
+    #         v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
+    #                    args=(ttemp, pp))
+    #         return v
+    #     f_vu = np.vectorize(_cal_v_single)
+    #     v = f_vu(pp, ttemp)
+    #     self.force_norm = False
+    #     return v
+    
+    def cal_v(self, p, temp, min_strain=0.3, max_strain=1.1):
         """
         calculate unit-cell volume at given pressure and temperature
 
@@ -417,6 +564,7 @@ class JHEOS(object):
         :return: unit-cell volume in A^3
         :note: 2017/05/10 I found wrap function is not compatible with
             OrderedDict. So I convert unp array to np array.
+        :note: Falls back to spline interpolation if root-finding fails.
         """
         v0 = self.params_therm['v0'].nominal_value
         self.force_norm = True
@@ -427,12 +575,57 @@ class JHEOS(object):
             if (pp <= 1.e-5) and (ttemp == 300.):
                 return v0
 
+            # Try root-finding first
             def f_diff(v, ttemp, pp):
-                return self.cal_p(v, ttemp) - pp
-            # print(f_diff(v0 * 0.3, temp, p))
-            v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
-                       args=(ttemp, pp))
-            return v
+                result = self.cal_p(v, ttemp)
+                return (result.item() if hasattr(result, 'item') else float(result)) - pp
+            
+            try:
+                v = brenth(f_diff, v0 * max_strain, v0 * min_strain,
+                        args=(ttemp, pp))
+                return v
+            except (ValueError, RuntimeError):
+                pass  # Fall through to spline approach
+            
+            # Spline fallback
+            try:
+                # Adaptive compression range check
+                current_max = max_strain
+                for _ in range(30):
+                    v_test = v0 * current_max
+                    p_test = self.cal_p(v_test, ttemp)
+                    p_test = p_test.item() if hasattr(p_test, 'item') else float(p_test)
+                    
+                    if pp <= p_test:
+                        break
+                        
+                    current_max *= 0.5
+                    if current_max < 1e-10:
+                        return None
+                
+                # Build spline with log spacing for better resolution
+                v_min = v0 * current_max
+                v_max = v0 * min_strain
+                v_arr = np.logspace(np.log10(v_min), np.log10(v_max), 200)
+                
+                # Calculate pressures
+                p_arr = np.array([
+                    (self.cal_p(v, ttemp).item() if hasattr(self.cal_p(v, ttemp), 'item') 
+                    else float(self.cal_p(v, ttemp)))
+                    for v in v_arr
+                ])
+                
+                # Sort by pressure (ensure monotonic)
+                idx = np.argsort(p_arr)
+                spline = CubicSpline(p_arr[idx], v_arr[idx], extrapolate=False)
+                
+                # Evaluate at target pressure
+                v = float(spline(pp))
+                return v if not np.isnan(v) else None
+                
+            except Exception:
+                return None
+
         f_vu = np.vectorize(_cal_v_single)
         v = f_vu(pp, ttemp)
         self.force_norm = False

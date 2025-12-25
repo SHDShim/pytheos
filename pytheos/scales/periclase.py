@@ -48,8 +48,8 @@ class Zha2000(MGEOS):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(160.2, 0.0)),
                                  ('k0p', uct.ufloat(4.03, 0.0))])
-        reference = 'Zha et al. 2000. PNAS 97, 13494+'
-        MGEOS.__init__(self, n, z, params_st=params_st,
+        reference = 'Zha et al. 2000. PNAS 97, 13494+, no thermal pressure'
+        MGEOS.__init__(self, n, z, params_st=params_st, params_th=None, 
                        eqn_st='bm3', reference=reference)
 
 
@@ -62,8 +62,8 @@ class Ye2017(MGEOS):
         params_st = OrderedDict([('v0', uct.ufloat(v0, ef_v)),
                                  ('k0', uct.ufloat(160.3, 0.0)),
                                  ('k0p', uct.ufloat(4.109, 0.022))])
-        reference = 'Ye et al. 2017. JGR 10.1002/2016JB013811'
-        MGEOS.__init__(self, n, z, params_st=params_st,
+        reference = 'Ye et al. 2017. JGR 10.1002/2016JB013811, no thermal pressure'
+        MGEOS.__init__(self, n, z, params_st=params_st, params_th=None,
                        eqn_st='vinet', reference=reference)
 
 
@@ -100,7 +100,7 @@ class Tange2009(MGEOS):
                                  ('a', uct.ufloat(0.138, 0.019)),
                                  ('b', uct.ufloat(5.4, 1.1)),
                                  ('theta0', uct.ufloat(761., 13.0))])
-        reference = 'Tange, 2009, ?'
+        reference = 'Tange, 2009, JGR 114, B03208+'
         MGEOS.__init__(self, n, z, params_st=params_st, params_th=params_th,
                        eqn_st='vinet', eqn_th='tange', reference=reference)
 

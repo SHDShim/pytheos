@@ -3,3 +3,4 @@ matplotlib
 uncertainties
 scipy
 lmfit
+periodictable

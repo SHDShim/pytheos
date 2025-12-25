@@ -57,8 +57,9 @@ Some important motivations are:
 :param reference: reference for the EOS
 
 """
+__version__ = "0.0.2"
 from .eqn_bm3 import bm3_p, bm3_v, bm3_k, bm3_g, \
-    bm3_small_f, bm3_big_F, bm3_k_num  # , bm3_p_u, bm3_v_u, bm3_k_u
+    bm3_small_f, bm3_big_F, bm3_k_num, bm3_v_single  # , bm3_p_u, bm3_v_u, bm3_k_u
 from .eqn_vinet import vinet_p, vinet_v, vinet_k, \
     vinet_k_num  # ,  vinet_p_u, vinet_v_u, vinet_k_u
 from .eqn_kunc import kunc_p, kunc_v, kunc_k_num  # , kunc_p_u, kunc_v_u
@@ -86,3 +87,6 @@ from . import plot
 from .scales import gold
 from .scales import platinum
 from .scales import periclase
+from .scales import sodium_chloride
+from .scales import sodium_chloride_b2
+from .scales import neon
