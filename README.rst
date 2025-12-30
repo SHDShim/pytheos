@@ -33,12 +33,6 @@ Clone the repository and enter the source directory::
     git clone https://github.com/SHDShim/pytheos.git
     cd pytheos
 
-To work from a specific branch or tagged release (recommended for reproducibility)::
-
-    git checkout master
-    # or, for a tagged release
-    # git checkout v0.0.2
-
 2. Create a dedicated conda environment
 
 Create a clean conda environment to avoid dependency conflicts::
