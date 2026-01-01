@@ -25,15 +25,18 @@ requires-python = ">=3.9"
 
 dependencies = [
     "numpy",
-    "scipy"
+    "scipy",
+    "matplotlib",
+    "uncertainties",
+    "lmfit"
 ]
 
 [project.urls]
 Homepage = "https://github.com/SHDShim/pytheos"
 Source = "https://github.com/SHDShim/pytheos"
 
-[tool.setuptools]
-packages = ["pytheos"]
+[tool.setuptools.packages.find]
+include = ["pytheos*"]
 
 [tool.setuptools.dynamic]
 version = { attr = "pytheos.__version__" }
