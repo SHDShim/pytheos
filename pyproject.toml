@@ -28,7 +28,8 @@ dependencies = [
     "scipy",
     "matplotlib",
     "uncertainties",
-    "lmfit"
+    "lmfit",
+    "periodictable"
 ]
 
 [project.urls]
